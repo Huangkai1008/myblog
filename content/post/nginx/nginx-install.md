@@ -1,6 +1,6 @@
 ---
 title: "Nginx安装和基本使用"
-date: 2019-09-27T13:56:20+08:00
+date: 2019-08-26T13:56:20+08:00
 lastmod: 2019-09-27T13:56:20+08:00
 description: ""
 draft: false
