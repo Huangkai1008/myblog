@@ -1,7 +1,7 @@
 ---
 title: "Mysql Install"
 date: "2019-10-08"
-draft: true
+draft: false
 categories:
     - "mysql"
     - "install"
