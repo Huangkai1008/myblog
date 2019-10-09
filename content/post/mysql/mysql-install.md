@@ -9,13 +9,13 @@ categories: ["mysql"]
 # Mysql安装
 * 版本: 8.0
 * 添加源
-    ``` bash
-    yum local install https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
-    ```
+  ``` bash
+  yum local install https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
+  ```
 * 安装
-    ```bash
-    yum install mysql-community-server
-    ```
+  ```bash
+  yum install mysql-community-server
+  ```
 
 * 启动mysql
 
