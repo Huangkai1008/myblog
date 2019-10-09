@@ -1,5 +1,15 @@
-## Redis Install
+---
+title: "Redis安装配置"
+date: 2018-10-11T13:56:20+08:00
+lastmod: 2018-10-12T13:56:20+08:00
+description: ""
+draft: false
+tags: ["redis", "install"]
+categories: ["redis"]
+---
 
+
+## Redis 安装
 * Platform: centos7
 
 * version: 5.0
@@ -13,6 +23,7 @@
   make && make install
   ```
 
+## Redis配置
 * 设置配置文件目录
 
   ```bash
@@ -29,6 +40,7 @@
   protected-mode no (yes -> no)  # 关闭保护模式/或者添加密码
   ```
 
+## Redis使用
 * 启动
 
   ```bash

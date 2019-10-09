@@ -1,12 +1,13 @@
 ---
 title: "Mysql修改密码和修改navicat 连接2059问题"
 date: 2018-09-12T13:56:20+08:00
+lastmod: 2018-09-13T13:56:20+08:00
 description: ""
 draft: true
 tags: ["mysql", "mariadb", "navicat"]
 categories: ["mysql"]
 ---
-# Mysql修改密码和修改navicat 连接2059问题
+## Mysql修改密码
 
 * 版本 ：8.0
 
@@ -20,11 +21,8 @@ categories: ["mysql"]
      vim /etc/my.cnf
      ```
   
-     > 增加
-     >
-     > ```bash
-     > skip-grant-tables
-     > ```
+        > 增加<pre>skip-grant-tables</pre>
+                                                                              
   
   2. 重启mysql服务
   
@@ -51,7 +49,7 @@ categories: ["mysql"]
      ALTER USER 'root'@'%' IDENTIFIED BY'Huang|12345';
      ```
   
-* 修复navicat 2059问题
+## 修复navicat 2059问题
 
    1. 更改加密方式
 
@@ -59,13 +57,13 @@ categories: ["mysql"]
       ALTER USER 'root'@'%' IDENTIFIED BY 'Huang|12345' PASSWORD EXPIRE NEVER;
       ```
 
-  	2. 更改root用户密码
+  2. 更改root用户密码
 
       ```mysql
       ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'Huang|12345';
       ```
 
-  	3. 刷新权限
+  3. 刷新权限
 
       ```mysql
       FLUSH PRIVILEGES;

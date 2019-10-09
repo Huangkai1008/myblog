@@ -1,12 +1,15 @@
 ---
-title: "Mysql安装"
+title: "Mysql安装配置"
 date: 2018-09-09T13:56:20+08:00
+lastmod: 2018-09-09T13:56:20+08:00
 description: ""
 draft: false
 tags: ["mysql", "install"]
 categories: ["mysql"]
 ---
-# Mysql安装
+
+
+## Mysql安装
 * 版本: 8.0
 * 添加源
   ``` bash
@@ -17,6 +20,7 @@ categories: ["mysql"]
   yum install mysql-community-server
   ```
 
+## Mysql配置
 * 启动mysql
 
   ```bash
