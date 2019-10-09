@@ -1,22 +1,21 @@
 ---
-title: "Mysql Install"
-date: "2019-10-08"
+title: "Mysql安装"
+date: 2018-09-09T13:56:20+08:00
+description: ""
 draft: false
-categories:
-    - "mysql"
-    - "install"
+tags: ["mysql", "install"]
+categories: ["mysql"]
 ---
 # Mysql安装
 * 版本: 8.0
 * 添加源
-  ```bash
-  yum local install https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
-  ```
-	
+    ``` bash
+    yum local install https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
+    ```
 * 安装
-  ```bash
-  yum install mysql-community-server
-  ```
+    ```bash
+    yum install mysql-community-server
+    ```
 
 * 启动mysql
 
