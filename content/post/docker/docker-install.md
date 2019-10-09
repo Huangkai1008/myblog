@@ -11,10 +11,7 @@ categories: ["docker"]
 * version: 5.0
 
 
-## Docker Install
-
-* 安装
-
+## 安装
   * __Uninstall old versions__
 
     ```bash
@@ -27,6 +24,7 @@ categories: ["docker"]
                     docker-logrotate \
                     docker-engine
     ```
+
 
   * __Install Docker CE__
 
@@ -44,11 +42,12 @@ categories: ["docker"]
     sudo yum install docker-ce docker-ce-cli containerd.io
     ```
 
-  * Docker启动
+## 启动
+* Docker启动
 
-    ```bash
-    sudo systemctl start docker	# 启动Docker
-    sudo systemctl status docker	# 查看Docker状态
-    ```
+  ```bash
+  sudo systemctl start docker	# 启动Docker
+  sudo systemctl status docker	# 查看Docker状态
+  ```
 
     
