@@ -1,6 +1,17 @@
-# RabbitMQ
+---
+title: "RabbitMQ基础安装使用"
+date: 2019-06-12T13:56:20+08:00
+lastmod: 2018-06-12T13:56:20+08:00
+description: ""
+draft: false
+tags: ["mq", "rabbitMQ", "install"]
+categories: ["mq", "rabbitMQ"]
+---
+## RabbitMQ
 
 * Platform: Centos7
+
+## 安装
 
 * install Erlang
 
@@ -8,7 +19,7 @@
   yum install erlang
   ```
 
-* install 
+* install rabbitMQ
 
   ```bash
   # rpm安装
@@ -19,9 +30,8 @@
   yum install rabbitmq-server
   ```
 
-* config
-
-  * 启动远程访问
+## 配置
+* 启动远程访问
 
     ```bash
     [{rabbit, 
@@ -29,6 +39,7 @@
       {loopback_users, []}
       ]}]
     ```
+  
 
 * 安装插件
 
@@ -37,7 +48,7 @@
   ```
 
   
-
+## 使用
 * 服务命令
 
   ```bash
