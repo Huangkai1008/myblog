@@ -8,7 +8,8 @@ tags: ["python", "pylint", "format"]
 categories: ["python"]
 ---
 
-## Black
+Black是一个毫不妥协的python代码格式化工具, 特点是可配置项较少
+Black依赖于python3.6+, 官方地址在https://github.com/psf/black
 
 ## Install
 
