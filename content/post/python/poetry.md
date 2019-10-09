@@ -1,6 +1,15 @@
-## Poetry
+---
+title: "Poetry安装和使用"
+date: 2019-09-14T13:56:20+08:00
+lastmod: 2019-09-14T13:56:20+08:00
+description: ""
+draft: false
+tags: ["python", "python3", "venv", "virtual environment"]
+categories: ["python"]
+---
 
-### 安装
+
+## 安装
 
 * **pip**
 
@@ -8,7 +17,7 @@
   pip install poetry
   ```
 
-### 使用
+## 使用
 
 * **项目初始化**
   
@@ -38,7 +47,7 @@
 
     *  windows10: $User\AppData\Local\pypoetry\Cache\virtualenvs
 
-### 配置
+## 配置
 
 *  **添加源**
 

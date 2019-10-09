@@ -1,21 +1,22 @@
 ---
-title: "Black"
-date: 2018-09-25T13:56:20+08:00
+title: "Black安装和使用"
+date: 2019-09-27T13:56:20+08:00
+lastmod: 2019-09-27T13:56:20+08:00
 description: ""
-draft: true
+draft: false
 tags: ["python", "pylint", "format"]
 categories: ["python"]
 ---
 
 ## Black
 
-### Install
+## Install
 
 ```bash
 pip install black
 ```
 
-### Configure
+## Configure
 
 * **pyproject.toml**
 
@@ -30,8 +31,8 @@ pip install black
 
      > windows: File -> Settings -> Tools -> External Tools
   
-     ![External Tools](../images/1569419190770.png)
+     ![External Tools](../../../images/1569419190770.png)
   
   * Configure file watcher
   
-     ![File Watcher](../images/1569421391355.png)
+     ![File Watcher](../../../images/1569421391355.png)

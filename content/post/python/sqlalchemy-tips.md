@@ -1,4 +1,12 @@
-## Sqlalchemy
+---
+title: "Sqlalchemy使用注意"
+date: 2017-06-14T13:56:20+08:00
+lastmod: 2019-09-25T13:56:20+08:00
+description: ""
+draft: false
+tags: ["python", "mysql", "sqlalchemy", "tips"]
+categories: ["python", "mysql", "sqlalchemy"]
+---
 
 * 遇到in查询之类的批量删除或者更新，可以使用**synchronize_session=False**
 

@@ -1,6 +1,16 @@
-## Golang Install
+---
+title: "Golang安装"
+date: 2018-07-31T13:56:20+08:00
+lastmod: 2018-07-31T13:56:20+08:00
+description: ""
+draft: false
+tags: ["golang", "install"]
+categories: ["golang"]
+---
 
-* Platform: centos7
+## 安装
+
+* Platform: Centos7
 
 * version: 1.12
 
@@ -9,7 +19,7 @@
   ```bash
   cd /opt
   wget https://studygolang.com/dl/golang/go1.12.4.linux-amd64.tar.gz
-  tar xzvf go1.10.3.linux-amd64.tar.gz	# 安装
+  tar xzvf go1.12.4.linux-amd64.tar.gz	# 安装
   ```
 
 * 配置环境变量
