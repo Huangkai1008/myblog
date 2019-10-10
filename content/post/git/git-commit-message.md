@@ -3,7 +3,7 @@ title: "Git Commit Message编写规范"
 date: 2019-10-10T14:14:15+08:00
 lastmod: 2019-10-10T14:14:15+08:00
 description: ""
-draft: true
+draft: false
 tags: ["git", "tips"]
 categories: ["git"]
 ---
