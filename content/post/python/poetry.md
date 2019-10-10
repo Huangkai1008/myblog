@@ -51,14 +51,14 @@ categories: ["python"]
 
 *  **添加源**
 
-  修改pyproject.toml
+    修改pyproject.toml
 
-  ```toml
-  [[tool.poetry.source]]
-  name = "tsinghua"
-  url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
-  verify_ssl = true
-  ```
+     ```toml
+     [[tool.poetry.source]]
+     name = "tsinghua"
+     url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+     verify_ssl = true
+     ```
 
 
 
