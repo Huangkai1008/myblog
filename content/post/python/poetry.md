@@ -1,7 +1,7 @@
 ---
 title: "Poetry安装和使用"
 date: 2019-09-14T13:56:20+08:00
-lastmod: 2019-09-14T13:56:20+08:00
+lastmod: 2019-10-10T10:10:16+08:00
 description: ""
 draft: false
 tags: ["python", "python3", "venv", "virtual environment"]
@@ -45,7 +45,7 @@ categories: ["python"]
 
   * 虚拟环境地址
 
-    *  windows10: $User\AppData\Local\pypoetry\Cache\virtualenvs
+     -  **windows10**: $User\AppData\Local\pypoetry\Cache\virtualenvs
 
 ## 配置
 
