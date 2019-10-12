@@ -43,7 +43,7 @@ categories: ["python", "mysql", "sqlalchemy"]
   
   class Node(Model):
       __table_args__ = (
-          PrimaryKeyConstraint('pk1', 'pk2),
+          PrimaryKeyConstraint('pk1', 'pk2'),
       )
   
   ```
