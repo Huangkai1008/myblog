@@ -1,7 +1,7 @@
 ---
 title: "Poetry安装和使用"
 date: 2019-09-14T13:56:20+08:00
-lastmod: 2019-10-10T10:10:16+08:00
+lastmod: 2019-10-13T10:10:16+08:00
 description: ""
 draft: false
 tags: ["python", "python3", "venv", "virtual environment"]
@@ -17,12 +17,16 @@ categories: ["python"]
   source $HOME/.poetry/env  
   ```
 
-
 * **pip**
 
   ```bash
-  pip install poetry
+  pip install poetry  # 不推荐, 可能会有冲突
   ```
+
+**验证安装**
+```bash
+poetry --version
+```
 
 ## 使用
 
