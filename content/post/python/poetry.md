@@ -10,6 +10,13 @@ categories: ["python"]
 
 
 ## 安装
+* **custom installer**
+  
+  ```bash
+  curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+  source $HOME/.poetry/env  
+  ```
+
 
 * **pip**
 
