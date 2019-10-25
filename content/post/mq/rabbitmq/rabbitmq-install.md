@@ -58,6 +58,13 @@ categories: ["mq", "rabbitMQ"]
   systemctl enable rabbitmq-server.service    # 开机自启
   ```
 
+* 添加用户
+  ```bash
+  rabbitmqctl add_user root root123 # 添加新用户，用户名为 "root" ，密码为 "root123"
+  rabbitmqctl set_permissions -p / root ".*" ".*" ".*" # 为root用户添加所有权限
+  rabbitmqctl set_user_tags root adminstrator  # 设置root 用户为管理员角色
+  ```
+
 * 访问web页面
 
   ```

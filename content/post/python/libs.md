@@ -1,7 +1,7 @@
 ---
 title: "值得关注的Python库"
 date: 2019-05-27T13:56:20+08:00
-lastmod: 2019-10-02T13:56:20+08:00
+lastmod: 2019-10-25T13:56:20+08:00
 description: ""
 draft: false
 tags: ["python", "python3", "awesome"]
@@ -23,3 +23,5 @@ categories: ["python"]
 * [Pipenv](https://github.com/pypa/pipenv)         *用了很久的现在也在用的... 有时候Locking速度感人, pipfile声明版本可以防止很多坑*
 * [Black](https://github.com/psf/black)            *代码格式化库*
 
+## Test
+* [locust](https://github.com/locustio/locust)     *压力测试工具*
