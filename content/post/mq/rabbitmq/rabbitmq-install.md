@@ -1,7 +1,7 @@
 ---
 title: "RabbitMQ基础安装使用"
-date: 2019-06-12T13:56:20+08:00
-lastmod: 2018-06-12T13:56:20+08:00
+date: 2018-11-12T13:56:20+08:00
+lastmod: 2019-06-12T13:56:20+08:00
 description: ""
 draft: false
 tags: ["mq", "rabbitMQ", "install"]
