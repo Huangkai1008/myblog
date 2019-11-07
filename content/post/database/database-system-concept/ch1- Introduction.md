@@ -62,6 +62,7 @@ categories: ["database", "database-system-concept"]
 
 ### 模式与实例(Instances and Schema)
 类似于编程语言中的类型和变量
+
 * `逻辑模式(logic schema)` 数据库的总体逻辑结构，类似于程序设计中的变量类型信息
 * `物理模式(physical schema)` 数据库的总体物理结构
 * `实例(instance)` 数据库在特定时间点的实际内容， 类似于变量的值
