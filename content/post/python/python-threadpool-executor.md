@@ -199,8 +199,7 @@ with ThreadPoolExecutor() as t:
 import logging
 
 
-def executor_callback( worker):
-    """回调函数"""
+def executor_callback(worker):
     logging.info(f'finished')
     worker_exception = worker.exception()
     if worker_exception:
