@@ -52,7 +52,7 @@ Gitflow 提倡使用 `feature branches` 模式来开发各个相互独立的功�
 		在测试中，难免发现 bug，我们可以直接在 release 分支上修改，修改完后再 merge 到 develop 分支上（develop 分支包含的是已发布或者即将发布的代码）
 	
 	
-	3. hotfix
+	3. `hotfix`
 
 		这个分支是负责在生产环境上发现的问题，如 bug 或者性能问题等。 hotfixes 分支和 release 分支类似，都以 release 版本号命名，唯一的区别就是 hotfixes 是新建于 master 分支，release 分支则是从 develop 分支而来，修补结束以后，再合并进Master和Develop分支。它的命名，可以采用hotfix-*的形式
 		

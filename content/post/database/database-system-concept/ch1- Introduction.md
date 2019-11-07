@@ -57,3 +57,62 @@ categories: ["database", "database-system-concept"]
 * **基于对象的数据模型**(`Object-based data models (Object-oriented and Object-relational)`)
 * **半结构化数据模型**(`Semi-structured data model (XML)`)
 
+## 数据视图(`View of Data`)
+一个数据库系统的结构如下图
+
+### 模式与实例(Instances and Schema)
+类似于编程语言中的类型和变量
+* `逻辑模式(logic schema)` 数据库的总体逻辑结构，类似于程序设计中的变量类型信息
+* `物理模式(physical schema)` 数据库的总体物理结构
+* `实例(instance)` 数据库在特定时间点的实际内容， 类似于变量的值
+
+### 物理数据独立性(Physical  Data Independence)
+
+ > 定义： 在不更改逻辑模式的情况下修改物理模式的能力
+
+ * 应用程序依赖于逻辑模式(```logic schema```)
+
+ * 一般来说，不同级别和组件应该定义得很好，以便在某些部分中进行更改，不严重影响他人
+
+
+
+### 数据定义语言(Data Definition Language)
+
+ >  定义数据库模式的规范表示法
+
+   ```sql
+    create table instructor (
+		ID char(5),
+		name varchar(20),
+		dept_name varchar(20),
+		salary numeric(8,2))
+   ```
+
+   DDL编译器生成一组存储表模板信息的数据字典（`data dictionary`)
+
+   数据字典包含元信息(`metadata`)
+
+ *  数据库模式(`database schema`)
+ *  完整性约束(`Integrity constraints`)
+    - 主键
+*  授权(`Authorization`)
+
+
+
+### 数据处理语言(`Data Manipulation Language `)
+
+> 用于访问和更新由适当数据模型组织的数据的语言（查询语言）
+
+* DML一般分为两种类型
+  - Pure
+  - Commercial 
+    * 例如`SQL`
+
+​    
+
+### 结构化查询语言(`Structured Query Language`, SQL)
+
+> SQL查询语言是非过程的查询将多个表（可能只有一个）作为输入，并始终返回一个表(SQL query language is nonprocedural. A query takes as input several tables (possibly only one) and always returns a single table)
+
+
+
