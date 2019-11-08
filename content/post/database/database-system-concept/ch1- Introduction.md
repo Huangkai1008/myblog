@@ -59,6 +59,7 @@ categories: ["database", "database-system-concept"]
 
 ## 数据视图(`View of Data`)
 一个数据库系统的结构如下图
+![View of data](../../../../images/view_of_data.svg)
 
 ### 模式与实例(Instances and Schema)
 类似于编程语言中的类型和变量
@@ -115,5 +116,16 @@ categories: ["database", "database-system-concept"]
 
 > SQL查询语言是非过程的查询将多个表（可能只有一个）作为输入，并始终返回一个表(SQL query language is nonprocedural. A query takes as input several tables (possibly only one) and always returns a single table)
 
+### 数据库设计(`Database Design`)
+* 逻辑设计(`logic design`)  -- 决定数据库模式
+    * 业务决定   
+    
+        > 我们应该在数据库中记录哪些属性
+                       
+    * 计算机科学决定  
+    
+        > * 我们应该有什么关系模式 
+                         
+        > * 属性应该如何分布在不同的关系模式中
 
-
+* 物理设计(`physical design`) -- 决定数据库的物理布局
