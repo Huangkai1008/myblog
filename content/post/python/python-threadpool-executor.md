@@ -205,3 +205,6 @@ def executor_callback(worker):
     if worker_exception:
         logging.exception(worker_exception)
 ```
+
+## 备注
+* 一定使用with关键字处理线程池，在某些情况下线程池可能不能自动回收线程资源，with可以避免内存持续增长等情况
