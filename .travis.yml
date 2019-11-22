@@ -1,11 +1,7 @@
 language: go
-
-go:
-    - "1.11.5"
 git:
     depth: 1
-install:
-  - sudo apt-get install hugo
+install: go get github.com/gohugoio/hugo
 script: hugo
 deploy:
     provider: pages
