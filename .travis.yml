@@ -1,9 +1,13 @@
-sudo: false
 language: go
+
+go:
+    - "1.11.5"
 git:
     depth: 1
 install: go get -v github.com/gohugoio/hugo
 script: hugo
+env:
+    - GOPROXY=https://goproxy.io/
 deploy:
     provider: pages
     skip_cleanup: true
