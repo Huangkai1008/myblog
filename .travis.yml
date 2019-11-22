@@ -4,10 +4,13 @@ go:
     - "1.11.5"
 git:
     depth: 1
-install: go get -v github.com/gohugoio/hugo
+install:
+  - mkdir $HOME/src
+  - cd $HOME/src
+  - git clone https://github.com/gohugoio/hugo.git
+  - cd hugo
+  - go install --tags extended
 script: hugo
-env:
-    - GOPROXY=https://goproxy.io/
 deploy:
     provider: pages
     skip_cleanup: true
