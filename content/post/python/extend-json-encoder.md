@@ -51,8 +51,6 @@ class ExtendedEncoder(json.JSONEncoder):
     ```
 
     对于now如果使用json.dumps(t_now)便会触发<pre>TypeError: Object of type datetime is not JSON serializable</pre>
-
-
     使用扩展的Encoder
 
     ```python
@@ -65,9 +63,8 @@ class ExtendedEncoder(json.JSONEncoder):
     修改flask类的json_encoder
 
     ```python
-  from flask import Flask as _Flask
-  
-  class QuizFlask(_Flask):
+    from flask import Flask as _Flask
+    class QuizFlask(_Flask):
       """
       自定义flask
       """
@@ -82,7 +79,7 @@ class ExtendedEncoder(json.JSONEncoder):
               rv = list(rv)
   
           return super(QuizFlask, self).make_response(rv)
-  ```
+    ```
 
 * **Tortoise-orm**
 
