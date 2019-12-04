@@ -60,3 +60,92 @@ categories: ["python", "mysql", "sqlalchemy"]
        id = db.Column(db.Integer, primary_key=True)         # Flask_sqlalchemy
        double_column = Column(DOUBLE, comment='双精度字段')  # Sqlalchemy mysql double column
   ```
+
+* subquery使用实例
+  ```python
+  conditions = list()
+  for key, value in material_period.items():
+        condition = and_(
+            CraftEntityAttrs.attr_number == key, CraftEntityAttrs.attr_value == value
+        )
+        conditions.append(condition)
+
+    if not conditions:
+        return list()
+
+    stmt = (
+        db.session.query(CraftEntityAttrs.entity_id, CraftEntityAttrs.cat_number)
+        .filter(or_(*conditions))
+        .subquery()
+    )
+
+    query = db.session.query(
+        CraftEntityPeriodHours.proc_number,
+        CraftEntityPeriodHours.period,
+        CraftEntityPeriodHours.hours,
+        CraftEntityPeriodHours.major_wrapper_skill_level,
+        stmt.c.cat_number,
+    ).filter(CraftEntityPeriodHours.entity_id == stmt.c.entity_id)
+    ```
+    ```python
+    stmt = (
+        db.session.query(ProducePlan.row_id, ProducePlan.row_seq)
+        .filter(ProducePlan.proc_number.in_(constants.COIL_PROC_NUMBERS))
+        .distinct()
+        .subquery()
+    )
+
+    query = (
+        BatchDetail.query.join(
+            stmt,
+            and_(
+                BatchDetail.row_id == stmt.c.row_id,
+                BatchDetail.row_seq == stmt.c.row_seq,
+            ),
+        )
+        .join(PlanRow, BatchDetail.row_id == PlanRow.id)
+        .join(RowProject, PlanRow.project_id == RowProject.id)
+        .join(Order, RowProject.order_id == Order.id)
+        .with_entities(
+            Order.order_number,
+            Order.id.label('order_id'),
+            Order.project_name,
+            RowProject.row_project_number,
+            RowProject.id.label('project_id'),
+            Order.purchase_unit,
+            RowProject.fac_number,
+            RowProject.mat_number,
+            RowProject.mat_desc,
+            PlanRow.com_qty,
+            BatchDetail.row_id,
+            PlanRow.plan_row_number,
+            BatchDetail.batch_id,
+            BatchDetail.batch_number,
+            BatchDetail.batch_qty,
+            BatchDetail.batch_seq,
+            BatchDetail.single_pack_cycle,
+        )
+        .order_by(RowProject.id, BatchDetail.batch_id, BatchDetail.batch_seq)
+    )
+    ```
+    ```python
+    stmt = (
+        db.session.query(ProducePlan.project_id)
+        .outerjoin(
+            ProducePlanCompletion, ProducePlan.plan_id == ProducePlanCompletion.plan_id
+        )
+        .filter(
+            or_(
+                ProducePlanCompletion.completion.is_(None),
+                ProducePlanCompletion.completion
+                == constants.ProducePlanCompletion.not_scheduled.value,
+            )
+        )
+        .distinct()
+        .subquery()
+    )
+
+    query = db.session.query(ProducePlan.project_id).filter(
+        ProduceUserPlan.project_id.in_(stmt), ProduceUserPlan.proc_type == 'design'
+    )
+    ```
