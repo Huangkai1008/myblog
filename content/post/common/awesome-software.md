@@ -14,6 +14,7 @@ categories: ["software"]
 * `Vscode`
 * `Sublime text`
 * `Typora`(markdown编辑)
+* `Notion`(笔记软件)
 
 ## 画图
 * `Microsoft visio`
