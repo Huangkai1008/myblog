@@ -3,7 +3,7 @@ title: "Awesome Software"
 date: 2019-12-01T22:21:57+08:00
 lastmod: 2019-12-01T22:21:57+08:00
 description: ""
-draft: true
+draft: false
 tags: ["software", "awesome"]
 categories: ["software"]
 ---

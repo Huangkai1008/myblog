@@ -3,7 +3,7 @@ title: "Manjaro安装配置"
 date: 2019-08-01T22:21:57+08:00
 lastmod: 2019-12-02T11:02:57+08:00
 description: ""
-draft: true
+draft: false
 tags: ["linux", "install", "manjaro"]
 categories: ["linux"]
 ---

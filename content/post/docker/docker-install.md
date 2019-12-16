@@ -45,7 +45,6 @@ categories: ["docker"]
 
 ## 启动
 * Docker启动
-
   ```bash
   sudo systemctl start docker	# 启动Docker
   sudo systemctl status docker	# 查看Docker状态
