@@ -21,6 +21,11 @@ categories: ["mysql"]
   ```
 
 ## Mysql配置
+* 初始化
+  ```bash
+  sudo mysqld --initialize --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  ```
+
 * 启动mysql
 
   ```bash
