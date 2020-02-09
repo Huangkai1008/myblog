@@ -72,3 +72,30 @@ categories: ["redis"]
 
   
 
+## Supervisor管理Redis
+
+* 更改redis配置
+
+  ```bash
+  vim /etc/redis/redis.conf
+  daemonize no (yes -> no)   # 取消守护进程
+  ```
+
+* 创建supervisor对redis的配置文件
+
+    ```bash
+  vim /etc/supervisord.d/redis.ini
+  ```
+	
+       `redis.ini`文件如下
+  
+    ```bash
+  [program:redis]
+	command=redis-server /etc/redis/redis.conf	 	#	启动Redis的命令
+	autostart=true							  	  #	  supervisord启动时，该程序也启动
+	autorestart=true                                 #   异常退出时，自动启动
+	startsecs=3								      #   启动后持续3s后未发生异常，才表示启动成功						
+	stdout_logfile=/var/log/supervisor/redis/redis.log  #  标准输出流日志
+	stderr_logfile=/var/log/supervisor/redis/redis_err.log	# 标准错误输出流日志
+	
+	  ```
