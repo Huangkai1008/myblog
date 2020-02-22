@@ -40,6 +40,8 @@ categories: ["software"]
 ## Vm
 * `VirtualBox`
 * `Vagrant`
+* `Windows SubLinux(WSL)`
+* `Vmware`
 
 ## ssh工具
 * `MobaXterm`
@@ -51,5 +53,10 @@ categories: ["software"]
 
 ## 接口文档工具
 * `apidoc`
+* `swagger`
+
+## 终端
+* `cmder`
+* `Windows Termial`
 
 
