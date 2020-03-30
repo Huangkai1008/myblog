@@ -195,6 +195,7 @@ with ThreadPoolExecutor() as t:
 
 ## 异常处理
 * 通过添加回调函数的方法处理异常
+
 ```python
 import logging
 

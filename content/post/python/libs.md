@@ -27,3 +27,8 @@ categories: ["python"]
 
 ## Test
 * [locust](https://github.com/locustio/locust)     *压力测试工具*
+
+## Environment
+
+* [python-dotenv](https://github.com/theskumar/python-dotenv)
+* [environs](https://github.com/sloria/environs)
