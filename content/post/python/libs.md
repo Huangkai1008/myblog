@@ -25,6 +25,11 @@ categories: ["python"]
 * [Loguru](https://github.com/Delgan/loguru)       *python日志库*
 * [PySnooper](https://github.com/cool-RR/PySnooper) *python Debugger*
 
+
+## ORM 
+* [Gino](https://python-gino.org/)
+* [tortoise-orm](https://tortoise.github.io/)
+
 ## Test
 * [locust](https://github.com/locustio/locust)     *压力测试工具*
 
