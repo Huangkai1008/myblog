@@ -54,6 +54,7 @@ categories: ["software"]
 ## 接口文档工具
 * `apidoc`
 * `swagger`
+* `yapi`
 
 ## 终端
 * `cmder`
