@@ -64,7 +64,7 @@ MySQL客户端和服务端完成TCP握手后，连接器需要认证身份
 对于一个特定的例子
 
 ```mysql
-select * from user where ID=10；
+select * from user where ID=10;
 ```
 
 假定ID字段没有索引，那么执行器的执行流程是这样的：
