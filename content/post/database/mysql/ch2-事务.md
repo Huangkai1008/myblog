@@ -1,7 +1,7 @@
 ---
 title: "事务"
 date: 2020-06-02T22:25:20+08:00
-lastmod: 2020-06-02T22:25:20+08:00
+lastmod: 2020-06-03T22:01:24+08:00
 description: ""
 draft: false
 tags: ["mysql", "transaction"]
@@ -16,17 +16,17 @@ categories: ["mysql"]
 
 - **原子性（Atomicity）**：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行
 
-- **一致性（Consistency）**：事务应确保数据库的状态从一个一致状态转变为另一个一致状态。*一致状态*的含义是数据库中的数据应满足完整性约束。
+- **一致性（Consistency）**：事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。
 
-- **隔离性（Isolation）**：**通常来说**，一个事务所做的修改在最终提交以前，对其他事务是不可见的。****
+- **隔离性（Isolation）**：**通常来说**，一个事务所做的修改在最终提交以前，对其他事务是不可见的。
 
-- **持久性（Durability）**：已被提交的事务对数据库的修改应该永久保存在数据库中。****
+- **持久性（Durability）**：已被提交的事务对数据库的修改应该永久保存在数据库中。
 
   
 
 > 一个实现了ACID的数据库，相比没有实现ACID的数据库，通常会需要更强的CPU处理能力、更大的内存和更多的磁盘空间。
 
-## 隔离级别
+## 隔离级别（Isolation level）
 
 * **READ UNCOMMITTED（读未提交）**
 
@@ -52,4 +52,63 @@ categories: ["mysql"]
 |  READ COMMITTED  |     ×      |        √         |     √      |   ×    |
 | REPEATABLE READ  |     ×      |        ×         |     √      |   ×    |
 |   SERIALIZABLE   |     ×      |        ×         |     ×      |   √    |
+
+>  查看MySQL的隔离级别
+
+```mysql
+SHOW VARIABLES LIKE 'transaction_isolation';
+
++-----------------------+-----------------+
+| Variable_name         | Value           |
++-----------------------+-----------------+
+| transaction_isolation | REPEATABLE-READ |
++-----------------------+-----------------+
+1 row in set, 1 warning (0.00 sec)
+```
+
+> 设置当前会话的隔离级别
+
+```mysql
+SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;	# 设置当前会话为RC级别，下个事务生效
+```
+
+## 事务类型
+
+### 隐式事务
+
+DML操作的语句都会隐式的开启事务，并且在语句执行后没有错误的话隐式提交。可以通过将MySQL的`autocommit`这个变量（默认为1）设置为0将事务的`隐式提交`关闭，但需要注意，DML语句的隐式事务仍会启动，只是区别在于需要手动COMMIT显式提交这个事务，也就是将隐式事务转化为长事务了。
+
+```mysql
+SHOW VARIABLES LIKE 'autocommit'; 	# 查看隐式事务提交方式
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| autocommit    | ON    |
++---------------+-------+
+1 row in set, 1 warning (0.00 sec)
+```
+
+### 显式事务
+
+```mysql
+# 1.显式开启一个事务
+START TRANSACTION;
+BEGIN;
+# 2.提交事务
+COMMIT;
+# 3.回滚事务
+ROLLBACK;
+# 4.在事务中创建保存点，可以在同一事务中创建多个，以便通过ROLLBACK更灵活的回滚
+SAVEPOINT;
+```
+
+显式开启一个事务时，如果还有未提交的事务会自动提交，并且`autocommit`会被禁用直到该事务结束。对于显式事务，存在`completion_type`这样一个变量控制显式事务的行为。有下列三种情况：
+
+- 值为0时即为默认，执行COMMIT后提交该显式事务并结束该事务。
+- 值为1时，执行COMMIT后除了有值为0时的默认行为外，随后会自动开始一个相同隔离级别的事务。术语为`COMMIT AND CHAIN`
+- 值为2时，执行COMMIT后除了有值为0时的默认行为外，随后会断开与服务器的连接。术语为`COMMIT AND RELEASE`
+
+
+
 
