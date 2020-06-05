@@ -1,5 +1,5 @@
 ---
-title: "Mysql的基础架构"
+title: "MySQL的基础架构"
 date: 2020-06-01T21:56:20+08:00
 lastmod: 2020-06-01T21:56:20+08:00
 description: ""
