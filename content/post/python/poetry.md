@@ -71,6 +71,41 @@ poetry --version
      verify_ssl = true
      ```
 
+## 完整的实例
+
+```toml
+[tool.poetry]
+name = "market-admin"
+version = "0.1.0"
+description = "market-admin is a Market background management system with fastapi"
+authors = ["huangkai"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = {version = "0.38.1", extras = ["all"]}
+python-dotenv = "0.10.2"
+tortoise-orm = "0.13.5"
+aiomysql = "0.0.20"
+loguru = "^0.3.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "6.2.1"
+coverage = "5.3.1"
+
+[tool.black]	# Black工具配置
+target-version = ['py37']
+skip-string-normalization = true
+
+[[tool.poetry.source]]	# 源配置
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+default = true
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+```
 
 
 
