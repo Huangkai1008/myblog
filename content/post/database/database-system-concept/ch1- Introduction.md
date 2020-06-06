@@ -59,7 +59,7 @@ categories: ["database", "database-system-concept"]
 
 ## 数据视图(`View of Data`)
 一个数据库系统的结构如下图
-![View of data](../../../../images/view_of_data.svg)
+![View of data](https://gitee.com/huanghuang927/picture-host/raw/master/20210413133615.svg)
 
 ### 模式与实例(Instances and Schema)
 类似于编程语言中的类型和变量
@@ -121,11 +121,11 @@ categories: ["database", "database-system-concept"]
     * 业务决定   
     
         > 我们应该在数据库中记录哪些属性
-                       
+        
     * 计算机科学决定  
     
         > * 我们应该有什么关系模式 
-                         
+        
         > * 属性应该如何分布在不同的关系模式中
 
 * 物理设计(`physical design`) -- 决定数据库的物理布局

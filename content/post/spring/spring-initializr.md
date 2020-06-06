@@ -12,11 +12,11 @@ categories: ["java", "spring-boot", "spring"]
 1. 选择`File` -> `New` -> `Project` 新建项目
 
 2. 选择`Spring Initializr`， 点击`Next`，填写项目基本信息
-   		![1581824334310](../../../images/spring-initializr01.png)
-   		
+   		![](https://gitee.com/huanghuang927/picture-host/raw/master/20210413134322.png)
+   
 3.  项目依赖勾选`Spring Web`选择`Finish`等待项目构建
 
-     ![1581825014591](../../../images/spring-initilizr03.png)
+     ![](https://gitee.com/huanghuang927/picture-host/raw/master/20210413134345.png)
 
 ​     
 

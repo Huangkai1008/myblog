@@ -11,7 +11,7 @@ categories: ["mysql"]
 ## 逻辑架构
 MySQL可以大体分为`Server层`和`存储引擎层`两部分, 见图1
 
-![图1 Mysql逻辑架构图](../../../../images/Mysql逻辑架构图.png)
+![图1 Mysql逻辑架构图](https://gitee.com/huanghuang927/picture-host/raw/master/20210413133932.png)
 
 <div style="text-align: center;">图1 Mysql逻辑架构图</div>
 

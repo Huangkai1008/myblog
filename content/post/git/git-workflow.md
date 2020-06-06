@@ -14,7 +14,7 @@ categories: ["git"]
 
 Gitflow 提倡使用 `feature branches` 模式来开发各个相互独立的功能，同时分成不同的分支以便进行集成和发布
 
-![](../../../images/git-workflow-gitflow.jpg)
+![Git Workflow](https://gitee.com/huanghuang927/picture-host/raw/master/20210413133752.jpg)
 
 ###  分支介绍
 
@@ -23,7 +23,7 @@ Gitflow 提倡使用 `feature branches` 模式来开发各个相互独立的功�
   	 > * 主分支(master)
      >
      > * 开发分支(develop)
-    
+   
     在gitflow下,  `develop` 分支是一个类似全能的分支，用来存放、测试所有的代码，同时也是主要是用来合并代码、集成功能的分支
 
 	作为一个开发人员，在这是不允许直接提交代码到 `develop` 分支上的，更更更不允许直接提交到 `master` 分支。`master` 分支代表的是一个「stable」的分支，包含的是已投产或即将投产的代码。如果一段代码在 `master` 分支上，即代表它已经投产或即将投产发布
@@ -63,7 +63,7 @@ Gitflow 提倡使用 `feature branches` 模式来开发各个相互独立的功�
 
 
 
-    
+​    
 
 
 
