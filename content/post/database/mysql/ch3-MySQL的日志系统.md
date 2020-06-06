@@ -27,7 +27,7 @@ categories: ["mysql"]
 
 ​	     值得注意的是，redo log 的大小是固定的，为了能够持续不断的对更新记录进行写入，在redo log日志中设置了两个标志位置，`checkpoint`和`write pos`。`checkpoint`表示记录擦除的位置，`write pos`表示记录写入的位置。当`write pos`标志到了日志结尾时，会从结尾跳至日志头部循环写入，所以redo log的逻辑结构并不是线性的，可以看做一个圆周运动，逻辑结构见下图：
 
-![](../../../../images/redo log.png)
+![](https://gitee.com/huanghuang927/picture-host/raw/master/20210413231000.png)
 
 ​		当`write_pos`追上`checkpoint`时，表示redo log日志已经写满。这时不能继续执行新的数据库更新语句，需要停下来先删除一些记录，执行`checkpoint`规则腾出可写空间。
 
