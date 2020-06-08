@@ -2,7 +2,6 @@
 	path = public
 	url = git@github.com:Huangkai1008/huangkai1008.github.io.git
 	branch = master
-[submodule "themes/even"]
-	path = themes/even
-	url = https://github.com/olOwOlo/hugo-theme-even.git
-	branch = master
+[submodule "themes/hugo-theme-stack"]
+	path = themes/hugo-theme-stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack/
