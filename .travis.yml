@@ -13,6 +13,7 @@ deploy:
     skip_cleanup: true
     keep-history: true
     github_token: $GITHUB_TOKEN
+    edge: true
     on:
         branch: master
     local_dir: public
