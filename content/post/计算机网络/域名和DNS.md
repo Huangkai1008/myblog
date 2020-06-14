@@ -1,5 +1,5 @@
 ---
-title: "HTTP"
+title: "域名和DNS"
 date: 2020-06-14T16:02:15+08:00
 lastmod: 2020-06-14T16:02:15+08:00
 description: ""
