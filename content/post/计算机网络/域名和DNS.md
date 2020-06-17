@@ -20,6 +20,7 @@ categories: ["计算机网络"]
 根域名的下一级，叫做**顶级域名（`top-level domain，缩写为TLD`）**，比如 `.com` 、 `.net` ；再下一级叫做**次级域名（`second-level domain，缩写为SLD`）**，比如 `www.example.com` 里面的 `.example` ，这一级域名是用户可以注册的；再下一级是**主机名（`host`）**，比如`www.example.com`里面的`www`，又称为**三级域名**，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。
 
 > 主机名.次级域名.顶级域名.根域名
+> 
 > host.sld.tld.root
 
 ## 二、DNS
@@ -86,3 +87,9 @@ DNS 可以使用 **UDP** 或者 **TCP** 进行传输，**使用的端口号都�
 
 - 如果返回的响应超过的 512 字节（UDP 最大只支持 512 字节的数据）
 - 区域传送（区域传送是主域名服务器向辅助域名服务器传送变化的那部分数据）
+
+## 参考资料
+
+- 【日】户根勤. (2017). 网络是怎样连接的. 人民邮电出版社.
+- [Wikipedia : DNS](https://en.wikipedia.org/wiki/Domain_Name_System)
+- [阮一峰的网络日志: DNS 原理入门](https://www.ruanyifeng.com/blog/2016/06/dns.html)
