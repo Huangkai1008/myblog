@@ -23,7 +23,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: https://gitee.com/huanghuang927/picture-host/raw/master/20211018164707.jpg
 
     footer:
         since: 2019
