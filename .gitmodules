@@ -2,6 +2,7 @@
 	path = public
 	url = git@github.com:Huangkai1008/huangkai1008.github.io.git
 	branch = master
+
 [submodule "themes/hugo-theme-stack"]
 	path = themes/hugo-theme-stack
-	url = https://github.com/CaiJimmy/hugo-theme-stack/
+	url = https://gitee.com/huanghuang927/hugo-theme-stack.git
