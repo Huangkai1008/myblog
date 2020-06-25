@@ -5,7 +5,6 @@
 *   @website: https://jimmycai.com
 *   @link: https://github.com/CaiJimmy/hugo-theme-stack
 */
-
 import StackGallery from "ts/gallery";
 import { getColor } from 'ts/color';
 import menu from 'ts/menu';
@@ -29,14 +28,12 @@ let Stack = {
          */
         const articleTile = document.querySelector('.article-list--tile');
         if (articleTile) {
-            // @ts-ignore
             let observer = new IntersectionObserver(async (entries, observer) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
                     observer.unobserve(entry.target);
 
                     const articles = entry.target.querySelectorAll('article.has-image');
-                    // @ts-ignore
                     articles.forEach(async articles => {
                         const image = articles.querySelector('img'),
                             imageURL = image.src,
@@ -56,6 +53,38 @@ let Stack = {
 
             observer.observe(articleTile)
         }
+
+
+        /**
+         * Add copy button to code block
+        */
+        const codeBlocks = document.querySelectorAll('.article-content .highlight');
+        const copyText = `Copy`,
+            copiedText = `Copied!`;
+        codeBlocks.forEach(codeBlock => {
+            const copyButton = document.createElement('button');
+            copyButton.innerHTML = copyText;
+            copyButton.classList.add('copyCodeButton');
+            codeBlock.appendChild(copyButton);
+
+            const pre = codeBlock.getElementsByTagName('pre');
+            const code = pre[0].textContent;
+
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(code)
+                    .then(() => {
+                        copyButton.textContent = copiedText;
+
+                        setTimeout(() => {
+                            copyButton.textContent = copyText;
+                        }, 1000);
+                    })
+                    .catch(err => {
+                        alert(err)
+                        console.log('Something went wrong', err);
+                    });
+            });
+        });
 
         new StackColorScheme(document.getElementById('dark-mode-toggle'));
     }
