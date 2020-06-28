@@ -10,6 +10,10 @@ categories: ["计算机网络"]
 # HTTP
 
 ## 一、概述
+> **超文本传输协议（`HyperText Transfer Protocol, HTTP`）** 是 Web 的核心，HTTP 由客户端程序和服务器程序实现
+
+HTTP 使用 TCP 作为它的支撑运输协议，因为 HTTP 服务器并不保存关于客户的任何信息，所以 HTTP 是一个**无状态协议（`stateless protocol`）**。
+
 
 ### 请求和响应报文
 
@@ -96,8 +100,32 @@ Content-Type: text/html
 |      4xx(*client error*)      |        客户端错误        |
 |      5xx(*server error*)      |        服务器错误        |
 
+## 五、连接管理
+
+### 非持续连接和持续连接
+
+> 每个请求及其响应对经一个单独的 TCP 连接发送，此种方式称为使用**非持续连接（`non-persistent connection`）**，也可以称为**短连接**；
+>
+> 多个请求及其响应经过相同的TCP连接发送，此种方式称为使用**持续连接（`persistent connection`）**，也可以称为**长连接**
+
+从 **HTTP/1.1** 开始默认使用持续连接，如果要断开连接，需要由客户端或者服务器端提出断开，使用 `Connection : close`；
+
+在 **HTTP/1.1** 之前默认是非持续连接的，如果需要使用持续连接，则使用 `Connection : Keep-Alive`。
+
+####  非持续连接的问题
+
+* 必须为每一个请求的对象建立和维护一个全新的连接，**会产生大量的开销**，给 web 服务器带来严重负担
+* 每一个对象经受两倍 RTT（`Round-Trip Time, RTT, 即往返时延`）的交付时延（一个 RTT 创建 TCP，一个RTT请求和接受一个对象），效率较低
+
+#### 持续连接的问题
+
+* 在空闲状态也消耗服务器资源，而且在重负载时，还有可能遭受 [DoS](https://developer.mozilla.org/zh-CN/docs/Glossary/DOS_attack) 攻击，对于这种情况一般采取的策略是：
+  1.关闭一些长时间没有发生请求的连接
+  2.限制每个客户端的最大连接数，避免恶意的客户端影响服务端
+
 ## 参考资料
 
 - 【日】户根勤. (2017). 网络是怎样连接的. 人民邮电出版社.
+- Kurose, J. F., & Ross, K. W. (2018). *计算机网络-自顶而下方法* (7th ed.). 机械工业出版社.
 - [Wikipedia : HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 - [MDN : HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
