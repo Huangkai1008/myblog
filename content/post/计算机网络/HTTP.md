@@ -1,7 +1,7 @@
 ---
 title: "HTTP"
 date: 2020-06-12T12:22:57+08:00
-lastmod: 2020-06-29T19:47:57+08:00
+lastmod: 2020-07-05T14:43:57+08:00
 description: ""
 draft: false
 tags: ["计算机网络"]
@@ -12,7 +12,7 @@ categories: ["计算机网络"]
 ## 一、概述
 > **超文本传输协议（`HyperText Transfer Protocol, HTTP`）** 是 Web 的核心，HTTP 由客户端程序和服务器程序实现
 
-HTTP 使用 TCP 作为它的支撑运输协议，因为 HTTP 服务器并不保存关于客户的任何信息，所以 HTTP 是一个**无状态协议（`stateless protocol`）**。
+**HTTP 使用 TCP 作为它的支撑运输协议**，因为 HTTP 服务器并不保存关于客户的任何信息，所以 HTTP 是一个**无状态协议（`stateless protocol`）**。
 
 
 ### 请求和响应报文
