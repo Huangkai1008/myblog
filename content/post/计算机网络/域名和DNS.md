@@ -17,11 +17,23 @@ categories: ["计算机网络"]
 
 `www.example.com` 真正的域名是 `www.example.com.root` ，简写为 `www.example.com.` 。因为，根域名 `.root` 对于所有域名都是一样的，所以平时是省略的。
 
-根域名的下一级，叫做**顶级域名（`top-level domain，缩写为TLD`）**，比如 `.com` 、 `.net` ；再下一级叫做**次级域名（`second-level domain，缩写为SLD`）**，比如 `www.example.com` 里面的 `.example` ，这一级域名是用户可以注册的；再下一级是**主机名（`host`）**，比如`www.example.com`里面的`www`，又称为**三级域名**，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。
+
+
+根域名的下一级，叫做**顶级域名（`top-level domain，缩写为TLD`）**，比如 `.com` 、 `.net` ；
+
+
+
+再下一级叫做**次级域名（`second-level domain，缩写为SLD`）**，比如 `www.example.com` 里面的 `.example` ，这一级域名是用户可以注册的；
+
+
+
+再下一级是**主机名（`host`）**，比如`www.example.com`里面的`www`，又称为**三级域名**，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。
 
 > 主机名.次级域名.顶级域名.根域名
-> 
+>
 > host.sld.tld.root
+
+![](https://gitee.com/huanghuang927/picture-host/raw/master/20211212155532.png)
 
 ## 二、DNS
 
