@@ -11,8 +11,12 @@ disqusShortname: hugo-theme-stack
 googleAnalytics: UA-149768628-1
 
 # Theme i18n support
-# Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
-DefaultContentLanguage: zh-cn
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl, it, th, el
+DefaultContentLanguage: en
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: true
 
 permalinks:
     post: /p/:slug/
@@ -37,6 +41,7 @@ params:
         emoji: 🍥
         subtitle: Find and Go ...
         avatar:
+            enabled: true
             local: true
             src: img/avatar.jpg
 
@@ -52,6 +57,13 @@ params:
         enabled: true
         provider: disqus
 
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
+
         utterances:
             repo:
             issueTerm: pathname
@@ -61,6 +73,58 @@ params:
             host:
             site:
             locale:
+
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+            autoCreateIssue: false
+
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
+        waline:
+            serverURL:
+            lang:
+            visitor:
+            avatar:
+            emoji:
+                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+            requiredMeta:
+                - name
+                - email
+                - url
+            placeholder:
+            locale:
+                admin: Admin
+
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
+
+        giscus:
+            repo:
+            repoID:
+            category:
+            categoryID:
+            mapping:
+            lightTheme:
+            darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+
+        gitalk:
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+
+        cusdis:
+            host:
+            id:
 
     widgets:
         enabled:
@@ -102,7 +166,7 @@ params:
             enabled: true
 
 ### Custom menu
-### See https://docs.stack.jimmycai.com/configuration/custom-menu
+### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
     main:
@@ -111,6 +175,9 @@ menu:
           url: /
           weight: -100
           pre: home
+          params:
+              ### For demonstration purpose, the home link will be open in a new tab
+              newTab: true
 
 related:
     includeNewer: true
@@ -124,5 +191,13 @@ related:
           weight: 200
 
 markup:
+    goldmark:
+        renderer:
+            ## Set to true if you have HTML content inside Markdown
+            unsafe: false
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
     highlight:
         noClasses: false
