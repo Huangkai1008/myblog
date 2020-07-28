@@ -6,3 +6,6 @@ public
 
 # obsidian
 .obsidian
+
+# hugo
+.hugo_build.lock
