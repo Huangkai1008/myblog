@@ -14,7 +14,7 @@ categories: ["git"]
 
 Gitflow 提倡使用 `feature branches` 模式来开发各个相互独立的功能，同时分成不同的分支以便进行集成和发布
 
-![Git Workflow](https://gitee.com/huanghuang927/picture-host/raw/master/20210413133752.jpg)
+![Git Workflow](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210413133752.jpg)
 
 ###  分支介绍
 

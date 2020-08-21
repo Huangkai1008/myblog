@@ -32,7 +32,7 @@ Accept-Language: fr
 - 一个空行用来分隔首部和内容主体 Body
 - **消息主体（`body`）**
 
-  ![HTTP Requests Example](https://gitee.com/huanghuang927/picture-host/raw/master/20210906175921.png)
+  ![HTTP Requests Example](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210906175921.png)
   
   ----------------
 
@@ -59,7 +59,7 @@ Content-Type: text/html
 - **一个空行**用来分隔首部和内容主体 Body
 - **消息主体（`body`）**
 
-![HTTP Responses Example](https://gitee.com/huanghuang927/picture-host/raw/master/20210906205815.png)
+![HTTP Responses Example](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210906205815.png)
 
 -------------------------
 
@@ -115,7 +115,7 @@ Content-Type: text/html
 
 ## 五、连接管理
 
-![HTTP 1.X 的连接类型](https://gitee.com/huanghuang927/picture-host/raw/master/20211030124313.png)
+![HTTP 1.X 的连接类型](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211030124313.png)
 
 ### 非持续连接和持续连接
 
@@ -274,7 +274,7 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
 
 缓存的种类有很多,其大致可归为两类：**私有**与**共享缓存**。共享缓存存储的响应能够被多个用户使用。私有缓存只能用于单独用户。
 
-![缓存的种类](https://gitee.com/huanghuang927/picture-host/raw/master/20211113114522.png)
+![缓存的种类](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211113114522.png)
 
 #### **（私有）浏览器缓存**
 

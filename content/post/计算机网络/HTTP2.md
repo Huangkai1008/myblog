@@ -32,7 +32,7 @@ categories: ["计算机网络"]
 
 **HTTP/2** 所有性能增强的核心在于新的**二进制分帧层（`Binary framing layer`）**，它定义了如何封装 HTTP 消息并在客户端与服务器之间传输。
 
-![二进制分帧层](https://gitee.com/huanghuang927/picture-host/raw/master/20211123115225.svg)
+![二进制分帧层](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211123115225.svg)
 
 这里所谓的“层”，指的是位于套接字接口与应用可见的高级 HTTP API 之间一个经过优化的新编码机制: HTTP 的语义（包括各种动词、方法、标头）都不受影响，不同的是传输期间对它们的编码方式变了。 HTTP/1.x 协议以换行符作为纯文本的分隔符，而 HTTP/2 将所有传输的信息分割为更小的消息和帧，并采用二进制格式对它们编码。
 
@@ -54,7 +54,7 @@ categories: ["计算机网络"]
 
 
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211123143327.svg)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211123143327.svg)
 
 **HTTP/2** 将 HTTP 协议通信分解为二进制编码帧的交换，这些帧对应着特定数据流中的消息。所有这些都在一个 TCP 连接内复用。
 
@@ -66,7 +66,7 @@ categories: ["计算机网络"]
 
 **HTTP/2** 中新的二进制分帧层突破了这些限制，实现了**完整的请求和响应复用**: 客户端和服务器可以将 HTTP 消息分解为互不依赖的帧，然后交错发送，最后再在另一端把它们重新组装起来。
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211123170352.svg)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211123170352.svg)
 
 **HTTP/2** 中的新二进制分帧层解决了 HTTP/1.x 中存在的队首阻塞问题，也消除了并行处理和发送请求及响应时对多个连接的依赖。 结果，应用速度更快、开发更简单、部署成本更低。
 
@@ -74,13 +74,13 @@ categories: ["计算机网络"]
 
 **HTTP/2** 新增的另一个强大的新功能是，服务器可以对一个客户端请求发送多个响应。 换句话说，除了对最初请求的响应外，服务器还可以向客户端推送额外资源，而无需客户端明确地请求。
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211123170731.svg)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211123170731.svg)
 
 ## 六、标头压缩
 
 **HTTP/2** 使用 **HPACK** 压缩格式压缩请求和响应标头元数据。
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211123170928.svg)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211123170928.svg)
 
 ## 参考资料
 

@@ -59,7 +59,7 @@ categories: ["database", "database-system-concept"]
 
 ## 数据视图(`View of Data`)
 一个数据库系统的结构如下图
-![View of data](https://gitee.com/huanghuang927/picture-host/raw/master/20210413133615.svg)
+![View of data](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210413133615.svg)
 
 ### 模式与实例(Instances and Schema)
 类似于编程语言中的类型和变量

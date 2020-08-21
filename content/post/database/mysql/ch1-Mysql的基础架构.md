@@ -14,7 +14,7 @@ categories: ["mysql"]
 
 MySQL可以大体分为**Server层**和**存储引擎层**两部分, 见图1
 
-![图1 Mysql逻辑架构图](https://gitee.com/huanghuang927/picture-host/raw/master/20211018154957.png)
+![图1 Mysql逻辑架构图](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211018154957.png)
 
 <div style="text-align: center;">图1 Mysql逻辑架构图</div>
 

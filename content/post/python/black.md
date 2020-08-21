@@ -32,8 +32,8 @@ pip install black
 
      > windows: File -> Settings -> Tools -> External Tools
   
-     ![External Tools](https://gitee.com/huanghuang927/picture-host/raw/master/20210413134138.png)
+     ![External Tools](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210413134138.png)
   
   * Configure file watcher
   
-     ![File Watcher](https://gitee.com/huanghuang927/picture-host/raw/master/20210413134203.png)
+     ![File Watcher](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210413134203.png)

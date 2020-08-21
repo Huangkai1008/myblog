@@ -30,7 +30,7 @@ InnoDB 引擎对数据更新，是先将更新记录写入到重做日志，在�
 ### 逻辑结构
 redo log 的大小是固定的，为了能够持续不断的对更新记录进行写入，在redo log日志中设置了两个标志位置，`checkpoint`和`write pos`。`checkpoint`表示记录擦除的位置，`write pos`表示记录写入的位置。当`write pos`标志到了日志结尾时，会从结尾跳至日志头部循环写入，所以redo log的逻辑结构并不是线性的，可以看做一个圆周运动，逻辑结构见下图：
 
-![redo log的逻辑结构](https://gitee.com/huanghuang927/picture-host/raw/master/20210413231000.png)
+![redo log的逻辑结构](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210413231000.png)
 
 <div style="text-align: center;">图1 redo log的逻辑结构</div>
 
@@ -44,7 +44,7 @@ redo log 的大小是固定的，为了能够持续不断的对更新记录进�
 
 在计算机操作系统中，用户空间(`user space`)下的缓冲区数据一般情况下是无法直接写入磁盘的，中间必须经过操作系统内核空间(`kernel space`)的缓冲区(`OS Buffer`)。因此，`redo log buffer`写入`redo log file`实际上是先写入`OS Buffer`，然后再通过系统调用`fsync()`将其刷到`redo log file`中，流程如下图：
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211019163050.png)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211019163050.png)
 
 
 当数据修改时，除了修改`buffer pool`中的数据，还会在redo log中记录这次操作。如果MySQL宕机，重启时可以读取redo log中的数据，对数据库进行恢复，从而保证了事务的持久性，**使得数据库获得`crash-safe`能力。**
@@ -135,7 +135,7 @@ SHOW VARIABLES LIKE 'innodb_flush_log_at_trx_commit';
 
  MySQL 事务提交的时候，需要同时完成 `redo log` 和 `binlog` 的提交，为了让两份日志之间的逻辑一致，需要用到**两阶段提交**，这个场景下的两阶段提交发生在 MySQL 内部，和分布式系统的两阶段提交是两个概念。
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211020170253.svg)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211020170253.svg)
 
 ## 四、回滚日志 (undo log)
 
@@ -152,6 +152,6 @@ SHOW VARIABLES LIKE 'innodb_flush_log_at_trx_commit';
 
 在数据库中，这两种日志经常都是一起工作的，可以将它们整体看做一条事务日志，其中包含了事务的 ID、修改的行元素以及修改前后的值。
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211020225433.png)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211020225433.png)
 
 一条事务日志同时包含了修改前后的值，能够非常简单的进行回滚和重做两种操作。
