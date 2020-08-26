@@ -25,7 +25,7 @@ categories: ["计算机网络"]
 >
 > host.sld.tld.root
 
-![](https://gitee.com/huanghuang927/picture-host/raw/master/20211212155532.png)
+![](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211212155532.png)
 
 ## 二、DNS
 
@@ -87,7 +87,7 @@ math.stackexchange.com. 600 IN A 151.101.1.69
 
 ### 传输方式
 
-DNS 可以使用 **UDP** 或者 **TCP** 进行传输，**使用的端口号都为 53**。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务器都必须自己处理超时和重传从而保证可靠性。在两种情况下会使用 TCP 进行传输：
+DNS 可以使用 [UDP](运输层.md#二、UDP) 或者 **TCP** 进行传输，**使用的端口号都为 53**。大多数情况下 DNS 使用 UDP 进行传输，这就要求域名解析器和域名服务器都必须自己处理超时和重传从而保证可靠性。在两种情况下会使用 TCP 进行传输：
 
 - 如果返回的响应超过的 512 字节（UDP 最大只支持 512 字节的数据）
 - 区域传送（区域传送是主域名服务器向辅助域名服务器传送变化的那部分数据）
