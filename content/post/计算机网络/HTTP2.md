@@ -3,6 +3,7 @@ title: "HTTP/2"
 date: 2020-07-10T15:51:57+08:00
 lastmod: 2020-07-12T17:11:57+08:00
 description: ""
+image: "https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20211123115225.svg"
 draft: false
 tags: ["计算机网络", "HTTP"]
 categories: ["计算机网络"]
