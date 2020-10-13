@@ -10,10 +10,10 @@ categories: ["计算机网络"]
 # HTTP
 
 ## 一、概述
+
 > **超文本传输协议（`HyperText Transfer Protocol, HTTP`）** 是 Web 的核心，HTTP 由客户端程序和服务器程序实现
 
 **HTTP 使用 TCP 作为它的支撑运输协议**，因为 HTTP 服务器并不保存关于客户的任何信息，所以 HTTP 是一个**无状态协议（`stateless protocol`）**。
-
 
 ### 请求和响应报文
 
@@ -25,7 +25,7 @@ categories: ["计算机网络"]
 GET / HTTP/1.1
 Host: developer.mozilla.org
 Accept-Language: fr
- ```
+```
 
 - **起始行（`start line`）**：包含一个[HTTP方法（`method`）](#二、HTTP方法)、**请求目标（`request target`）** 和 **HTTP 版本 （`HTTP version`）**
 - **消息头（`headers`）**： 整个 header（包括其值）表现为单行形式
@@ -61,7 +61,7 @@ Content-Type: text/html
 
 ![HTTP Responses Example](https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/20210906205815.png)
 
--------------------------
+ ----------------
 
 ## 二、HTTP 方法
 
@@ -91,8 +91,7 @@ Content-Type: text/html
 
 需要注意的是，服务器不一定会确保请求方法的幂等性，有些应用可能会错误地打破幂等性约束。
 
-
-------------
+----------------
 
 ## 三、HTTP 首部（`header`)
 
@@ -125,16 +124,14 @@ Content-Type: text/html
 
 **这里的持续连接（长连接）和非持续连接（短连接）指的都是TCP连接**。
 
-
-
 从 **HTTP/1.1** 开始默认使用持续连接，如果要断开连接，需要由客户端或者服务器端提出断开，使用 `Connection : close`；
 
 在 **HTTP/1.1** 之前默认使用非持续连接的，如果需要使用持续连接，则使用 `Connection : Keep-Alive`。
 
-####  非持续连接的问题
+#### 非持续连接的问题
 
-* 必须为每一个请求的对象建立和维护一个全新的连接，**会产生大量的开销**，给 web 服务器带来严重负担
-* 每一个对象经受两倍 RTT（`Round-Trip Time, RTT, 即往返时延`）的交付时延（一个 RTT 创建 TCP，一个RTT请求和接受一个对象），效率较低
+- 必须为每一个请求的对象建立和维护一个全新的连接，**会产生大量的开销**，给 web 服务器带来严重负担
+- 每一个对象经受两倍 RTT（`Round-Trip Time, RTT, 即往返时延`）的交付时延（一个 RTT 创建 TCP，一个RTT请求和接受一个对象），效率较低
 
 #### 持续连接的问题
 
@@ -143,7 +140,6 @@ Content-Type: text/html
 1. 关闭一些长时间没有发生请求的连接
 
 2. 限制每个客户端的最大连接数，避免恶意的客户端影响服务端
-
 
 以`Nginx`为例 ：
 
@@ -160,14 +156,14 @@ Cookie 曾一度用于客户端数据的存储，因当时并没有其它合适�
 
 #### 用途
 
-* **会话状态管理**（如用户登录状态、购物车、游戏分数或其它需要记录的信息）
+- **会话状态管理**（如用户登录状态、购物车、游戏分数或其它需要记录的信息）
 
-* **个性化设置**（如用户自定义设置、主题等）
+- **个性化设置**（如用户自定义设置、主题等）
 
-* **浏览器行为跟踪**（如跟踪分析用户行为等）
-
+- **浏览器行为跟踪**（如跟踪分析用户行为等）
 
 #### 创建过程
+
 当服务器收到 HTTP 请求时，服务器可以在响应头里面添加一个 Set-Cookie 选项。浏览器收到响应后通常会保存下 Cookie，之后对该服务器每一次请求中都通过  Cookie 请求头部将 Cookie 信息发送给服务器。另外，Cookie 的过期时间、域、路径、有效期、适用站点都可以根据需要来指定。
 
 ##### **Set-Cookie响应头部和Cookie请求头部**
@@ -177,8 +173,6 @@ Cookie 曾一度用于客户端数据的存储，因当时并没有其它合适�
 ```html
 Set-Cookie: <cookie名>=<cookie值>
 ```
-
-
 
 服务器通过该头部告知客户端保存 Cookie 信息，客户端得到响应报文后把 Cookie 内容保存到浏览器中：
 
@@ -191,8 +185,6 @@ Set-Cookie: tasty_cookie=strawberry
 [page content]
 ```
 
-  
-
 现在，对该服务器发起的每一次新请求，浏览器都会将之前保存的Cookie信息通过 Cookie 请求首部字段再发送给服务器：
 
 ```http
@@ -201,18 +193,14 @@ Host: www.example.org
 Cookie: yummy_cookie=choco; tasty_cookie=strawberry
 ```
 
-
-
 #### 生命周期
 
-* **会话期 Cookie**：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效
-* **持久性 Cookie**：指定过期时间（Expires）或有效期（max-age）之后就成为了持久性的 Cookie
+- **会话期 Cookie**：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效
+- **持久性 Cookie**：指定过期时间（Expires）或有效期（max-age）之后就成为了持久性的 Cookie
 
 ```html
 Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 ```
-
-
 
 #### 作用域
 
@@ -227,8 +215,6 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 - /docs
 - /docs/Web/
 - /docs/Web/HTTP
-
-
 
 #### 限制访问
 
@@ -246,13 +232,9 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
 ```
 
-
-
 以下为一个Golang实现的简单的使用 Cookie 的代码示例：
 
 {{< gist Huangkai1008 84e3f3dd5f399412e7bdae4a348551fe >}}
-
-
 
 ### Session
 
@@ -260,11 +242,11 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
 
 ### Cookie 和 Session 的不同
 
-* **作用范围不同**，`Cookie` 保存在客户端，`Session` 保存在服务端
-* **存取方式的不同**，`Cookie` **只能保存 ASCII**，`Session` 可以存任意数据类型，一般情况下我们可以在 Session 中保持一些常用变量信息
-* **有效期不同**，`Cookie` 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭或者 Session 超时都会失效
-* **隐私策略不同**，`Cookie` 存储在客户端，比较容易遭到不法获取；`Session` 存储在服务端，安全性相对要好一些
-* **存储大小不同**， **单个 `Cookie` 保存的数据不能超过 4KB**，`Session` 可存储上限远高于 `Cookie`
+- **作用范围不同**，`Cookie` 保存在客户端，`Session` 保存在服务端
+- **存取方式的不同**，`Cookie` **只能保存 ASCII**，`Session` 可以存任意数据类型，一般情况下我们可以在 Session 中保持一些常用变量信息
+- **有效期不同**，`Cookie` 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭或者 Session 超时都会失效
+- **隐私策略不同**，`Cookie` 存储在客户端，比较容易遭到不法获取；`Session` 存储在服务端，安全性相对要好一些
+- **存储大小不同**， **单个 `Cookie` 保存的数据不能超过 4KB**，`Session` 可存储上限远高于 `Cookie`
 
 ## 七、Web 缓存
 
@@ -336,8 +318,6 @@ Cache-Control: max-age=31536000
 Expires: Wed, 04 Jul 2012 08:26:05 GMT
 ```
 
-
-
 在**HTTP/1.1**中，会优先处理 **`max-age`** 指令，在**HTTP/1.0**中，会忽略掉 **`max-age`** 指令。
 
 ##### **验证方式**
@@ -400,14 +380,14 @@ If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT
 
 ##### 强制缓存的首部字段
 
-* **`Expires`**
-* **`Cache Control`**
+- **`Expires`**
+- **`Cache Control`**
 
 ##### 协商缓存的首部字段
 
-* **`Etag`**  & **`If-None-Match`**
+- **`Etag`**  & **`If-None-Match`**
 
-* **`Last-Modifed`**  & **`If-Modified-Since`**
+- **`Last-Modifed`**  & **`If-Modified-Since`**
 
 **强制缓存**和**协商缓存**都存在的情况下，先判断**强制缓存**是否生效，如果生效，不用发起请求，直接用缓存。如果**强制缓存**不生效再发起请求判断**协商缓存**。
 
@@ -437,9 +417,9 @@ If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT
 
 ### HTTP 的安全性问题
 
-* 使用明文进行通信，内容可能会被窃听
-* 不验证通信方的身份，通信方的身份有可能遭遇伪装
-* 无法证明报文的完整性，报文有可能遭篡改
+- 使用明文进行通信，内容可能会被窃听
+- 不验证通信方的身份，通信方的身份有可能遭遇伪装
+- 无法证明报文的完整性，报文有可能遭篡改
 
 ### HTTPS 概念
 
@@ -463,12 +443,12 @@ If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT
 
 访问者与网站之间发送的数据未被篡改或修改
 
-###  加密方式
+### 加密方式
 
 HTTPS 采用混合加密机制
 
-* 使用非对称密钥加密方式，传输对称密钥加密方式所需要的 Secret Key，从而保证安全性
-* 获取到 Secret Key 后，再使用对称密钥加密方式进行通信，从而保证效率
+- 使用非对称密钥加密方式，传输对称密钥加密方式所需要的 Secret Key，从而保证安全性
+- 获取到 Secret Key 后，再使用对称密钥加密方式进行通信，从而保证效率
 
 #### 对称密钥加密
 
@@ -477,7 +457,6 @@ HTTPS 采用混合加密机制
 #### 非对称密钥加密
 
 > **非对称密钥加密**，又称**公开密钥加密（`Public-Key Encryption`）**，加密和解密使用不同的密钥
-
 
 ## 参考资料
 
