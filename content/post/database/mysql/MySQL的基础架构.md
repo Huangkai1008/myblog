@@ -3,8 +3,9 @@ title: "MySQL的基础架构"
 date: 2020-06-01T21:56:20+08:00
 lastmod: 2020-10-25T22:14:18+08:00
 description: ""
+image: "https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/mysql-architecture.png"
 draft: false
-tags: ["mysql"]
+tags: ["mysql", "innodb"]
 categories: ["mysql"]
 ---
 
