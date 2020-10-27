@@ -3,7 +3,7 @@ title: "InnoDB 记录存储格式"
 description: 
 date: 2020-10-26T08:05:31+08:00
 lastmod: 2020-10-26T08:05:31+08:00
-image: "https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/Internet_Protocol_Analysis_-_Transport_Layer.png"
+image: "https://blog-1259169620.cos.ap-guangzhou.myqcloud.com/img/compact%E8%A1%8C%E6%A0%BC%E5%BC%8F.png"
 math: 
 license: MIT
 hidden: false
