@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>install on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/install/</link><description>Recent content in install on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 26 Aug 2019 13:56:20 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/install/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx安装和基本使用</title><link>https://huangkai1008.github.io/p/nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 26 Aug 2019 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/nginx%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid><description>Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。 其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。2011年6月1日，nginx 1.0.4发布。 Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，在BSD-like 协议下发行。其特点是占有内存少，并发能力强
+Install platform: Centos7
+version: 7.2
+安装
+wget http://nginx.org/download/nginx-1.16.1.tar.gz tar -zxvf nginx-1.16.1.tar.gz cd nginx-1.16.1 sudo ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install whereis nginx # 查看nginx安装地址 /usr/local/nginx BasicUse 启动
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf 重启
+cd /usr/local/nginx/sbin ./nginx -s reload Example Conf # /usr/local/nginx/conf/nginx.conf #user nobody; worker_processes 1; #error_log logs/error.log; #error_log logs/error.</description></item><item><title>Manjaro安装配置</title><link>https://huangkai1008.github.io/p/manjaro%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Aug 2019 22:21:57 +0800</pubDate><guid>https://huangkai1008.github.io/p/manjaro%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>基本安装 使用rufus以dd模式写入U盘 从u盘启动 将manjaro启动项中的driver和boot添加或修改driver=intel才能进入安装界面(双显卡笔记本) 安装系统, 注意不要联网, 否则容易卡在安装 reboot进入系统 manjaro启动项中quiet后增加nouveau.modeset=0(双显卡) 双显卡使用prime管理连接外接显示器 删除bumblebee或者开源驱动
+sudo mhwd -r pci nonfree 0300 安装nvidia私有闭源驱动
+方法一:
+sudo mhwd -i pci video-nvidia 或
+sudo mhwd -i pci video-nvidia-390xx # 390xx或者435xx, 数字是驱动版本... 方法二 系统设置-硬件设定中右键安装video-nvidia-390xx之类的驱动
+安装依赖
+sudo pacman -S linuxXXX-headers acpi_call-dkms xorg-xrandr xf86-video-intel git 注: XXX 为内核版本， 本来我的5.3有点问题，降级成4.19才可以，以4.19为例便是 linux419-headers
+注入
+sudo modprobe acpi_call 使用github上的脚本</description></item><item><title>RabbitMQ基础安装使用</title><link>https://huangkai1008.github.io/p/rabbitmq%E5%9F%BA%E7%A1%80%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 12 Nov 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/rabbitmq%E5%9F%BA%E7%A1%80%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</guid><description>RabbitMQ Platform: Centos7 安装 install Erlang
+yum install erlang install rabbitMQ
+# rpm安装 wget https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_14/rabbitmq-server-3.6.14-1.el7.noarch.rpm yum install rabbitmq-server-3.6.14-1.el7.noarch.rpm # yum安装 yum install rabbitmq-server 配置 启动远程访问
+[{rabbit, [ {loopback_users, []} ]}] 安装插件
+/sbin/rabbitmq-plugins enable rabbitmq_management 使用 服务命令
+systemctl start rabbitmq-server.service # 启动 systemctl status rabbitmq-server.service # 查看状态 systemctl restart rabbitmq-server.service # 重启 systemctl enable rabbitmq-server.service # 开机自启 添加用户</description></item><item><title>Redis安装配置</title><link>https://huangkai1008.github.io/p/redis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 11 Oct 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/redis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>Redis 安装 Platform: centos7
+version: 5.0
+安装
+wget http://download.redis.io/releases/redis-5.0.0.tar.gz # 获取包 tar -zxvf redis-5.0.0.tar.gz mv redis-5.0.0 /usr/local/redis make &amp;amp;&amp;amp; make install Redis配置 设置配置文件目录
+mkdir -p /etc/redis cp redis.conf /etc/redis 修改配置文件
+vim /etc/redis/redis.conf daemonize yes (no -&amp;gt; yes) # 守护进程 bind 0.0.0.0 (127.0.0.1 -&amp;gt; 0.0.0.0) # 远程登录 protected-mode no (yes -&amp;gt; no) # 关闭保护模式/或者添加密码 Redis使用 启动</description></item><item><title>MongoDB的安装</title><link>https://huangkai1008.github.io/p/mongodb%E7%9A%84%E5%AE%89%E8%A3%85/</link><pubDate>Wed, 12 Sep 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mongodb%E7%9A%84%E5%AE%89%E8%A3%85/</guid><description>安装 Platform: centos7</description></item><item><title>MariaDB安装</title><link>https://huangkai1008.github.io/p/mariadb%E5%AE%89%E8%A3%85/</link><pubDate>Sun, 09 Sep 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mariadb%E5%AE%89%E8%A3%85/</guid><description>MariaDB安装 platform: Centos7
+Install
+yum install -y mariadb-server MariaDB配置使用 Using
+systemctl start mariadb.service # 启动 systemctl enable mariadb.service # 开机自启 Configure
+首先是设置密码，会提示先输入密码
+Enter current password for root (enter for none): &amp;lt;–直接回车
+Set root password? [Y/n] &amp;lt;– 是否设置root用户密码，输入y并回车或直接回车
+New password: &amp;lt;– 设置root用户的密码
+Re-enter new password: &amp;lt;– 再输入一次你设置的密码
+其他配置
+Remove anonymous users?</description></item><item><title>Mysql安装配置</title><link>https://huangkai1008.github.io/p/mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 09 Sep 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>Mysql安装 版本: 8.0 添加源 yum local install https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm 安装 yum install mysql-community-server Mysql配置 初始化
+sudo mysqld --initialize --user=mysql --basedir=/usr --datadir=/var/lib/mysql 启动mysql
+systemctl start mysqld 设置mysql开机自启
+systemctl enable mysqld 查看初始密码
+grep &amp;#39;temporary password&amp;#39; /var/log/mysqld.log 进入mysql
+mysql -u root -p 修改密码
+ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;Huang|12345&amp;#39; 查看版本
+select version(); +-----------+ | version() | +-----------+ | 8.</description></item><item><title>Golang安装</title><link>https://huangkai1008.github.io/p/golang%E5%AE%89%E8%A3%85/</link><pubDate>Tue, 31 Jul 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/golang%E5%AE%89%E8%A3%85/</guid><description>安装 Platform: Centos7
+version: 1.12
+安装
+cd /opt wget https://studygolang.com/dl/golang/go1.12.4.linux-amd64.tar.gz tar xzvf go1.12.4.linux-amd64.tar.gz # 安装 配置环境变量
+vim ~/.zshrc # 如果用bash就是vim ~/.bashrc # 追加golang配置 export GOROOT=/opt/go export PATH=$PATH:$GOROOT/bin # 立即生效 source ~/.zshrc # 查看版本 go version</description></item><item><title>Docker安装</title><link>https://huangkai1008.github.io/p/docker%E5%AE%89%E8%A3%85/</link><pubDate>Wed, 31 Jan 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/docker%E5%AE%89%E8%A3%85/</guid><description>Platform: centos7
+version: 5.0
+安装 Uninstall old versions
+sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-engine Install Docker CE
+sudo yum install -y yum-utils \ device-mapper-persistent-data \ lvm2 # 设置stable源 sudo yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo # 安装Docker CE sudo yum install docker-ce docker-ce-cli containerd.</description></item><item><title>Python安装</title><link>https://huangkai1008.github.io/p/python%E5%AE%89%E8%A3%85/</link><pubDate>Sun, 08 Jan 2017 22:49:14 +0800</pubDate><guid>https://huangkai1008.github.io/p/python%E5%AE%89%E8%A3%85/</guid><description>Python安装 Platform: centos7
+Version: 3.7
+安装编译环境
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel libffi-devel 下载
+wget --no-check-certificate https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz 创建安装目录解压
+sudo mkdir /usr/local/python3 tar -zxvf Python-3.7.4.tgz cd Python-3.7.4/ 编译安装
+sudo ./configure --prefix=/usr/local/python3 # 指定创建的目录 make &amp;amp;&amp;amp; make install # 编译安装 软链接 创建python和pip软链接 ln -s /usr/local/python3/bin/python3 /usr/bin/python3 # python3 软链接 ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3 # pip3软链接 ln -s /usr/local/python3/bin/pipenv /usr/bin/pipenv # pipenv软链接 使用pyenv管理多个Python版本 安装pyenv 安装脚本 curl https://pyenv.</description></item></channel></rss>

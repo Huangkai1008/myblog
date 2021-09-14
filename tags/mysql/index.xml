@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>mysql on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/mysql/</link><description>Recent content in mysql on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 05 Jun 2020 22:07:21 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml"/><item><title>MySQL的日志系统</title><link>https://huangkai1008.github.io/p/mysql%E7%9A%84%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</link><pubDate>Fri, 05 Jun 2020 22:07:21 +0800</pubDate><guid>https://huangkai1008.github.io/p/mysql%E7%9A%84%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</guid><description>日志类型 ​ MySQL主要有两种日志类型，一种是物理日志（记录在某个数据页上做了什么修改)，一种是逻辑日志(存储了逻辑SQL修改语句)。redo log属于物理日志，binlog和undo log属于逻辑日志，其中物理日志的恢复速度远快于逻辑日志。
+redo log和undo log都属于InnoDB引擎层下的事务日志（transaction log）。
+重做日志 (redo log) 预写式技术 (Write Ahead logging, WAL) ​ InnoDB 引擎对数据更新，是先将更新记录写入到重做日志，在系统空闲时或者按照设定的更新策略再将日志中的内容更新到磁盘中，这就是预写式技术 (Write Ahead logging, WAL)，这种技术可以大大减少IO操作的频率，提升数据刷新的效率。
+重做日志的策略 ​ 重做日志（redo log）是 InnoDB 引擎层的日志，用来记录事务操作引起数据的变化，记录的是数据页的物理修改，提供前滚操作，redo log 保证事务的持久性。重做日志由两部分组成，一是内存中的重做日志缓冲区 (redo log buffer)，因为重做日志缓冲区在内存中，所以它是易失的，另一个就是在磁盘上的重做日志文件 (redo log file)，它是持久的。
+​ 当我们在一个事务中尝试对数据进行修改时，它会先将数据从磁盘读入内存，并更新内存中缓存的数据，然后生成一条重做日志并写入重做日志缓存，当事务真正提交时，MySQL 会将重做日志缓存中的内容刷新到重做日志文件，再将内存中的数据更新到磁盘上。
+​ 值得注意的是，redo log 的大小是固定的，为了能够持续不断的对更新记录进行写入，在redo log日志中设置了两个标志位置，checkpoint和write pos。checkpoint表示记录擦除的位置，write pos表示记录写入的位置。当write pos标志到了日志结尾时，会从结尾跳至日志头部循环写入，所以redo log的逻辑结构并不是线性的，可以看做一个圆周运动，逻辑结构见下图：
+​ 当write_pos追上checkpoint时，表示redo log日志已经写满。这时不能继续执行新的数据库更新语句，需要停下来先删除一些记录，执行checkpoint规则腾出可写空间。
+checkpoint规则: checkpoint触发后，将buffer中脏数据页和脏日志页都刷到磁盘。所谓的脏数据页就是指内存中未刷到磁盘的数据
+​ redo log中最重要的概念就是缓冲池buffer pool，这是在内存中分配的一个区域，包含了磁盘中部分数据页的映射，作为访问数据库的缓冲。当请求读取数据时，会先判断是否在缓冲池命中，如果未命中才会在磁盘上进行检索后放入缓冲池；当请求写入数据时，会先写入缓冲池，缓冲池中修改的数据会定期刷新到磁盘中。这一过程也被称之为刷脏 。
+​ 因此，当数据修改时，除了修改buffer pool中的数据，还会在redo log中记录这次操作；当事务提交时，会根据redo log的记录对数据进行刷盘。如果MySQL宕机，重启时可以读取redo log中的数据，对数据库进行恢复，从而保证了事务的持久性，使得数据库获得crash-safe能力。</description></item><item><title>事务</title><link>https://huangkai1008.github.io/p/%E4%BA%8B%E5%8A%A1/</link><pubDate>Tue, 02 Jun 2020 22:25:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/%E4%BA%8B%E5%8A%A1/</guid><description>概念 事务就是一组原子性的SQL查询，或者说一个独立的工作单元。如果数据库引擎能够成功地对数据库应用该组查询的全部语句，那么就执行该组查询。如果其中有任何一条语句因为崩溃或其他原因无法执行，那么所有的语句都不会执行。也就是说，事务内的语句，要么全部执行成功，要么全部执行失败。在 MySQL 中，事务支持是在引擎层实现的。
+ACID特性 原子性（Atomicity）：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行
+一致性（Consistency）：事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。
+隔离性（Isolation）：通常来说，一个事务所做的修改在最终提交以前，对其他事务是不可见的。
+持久性（Durability）：已被提交的事务对数据库的修改应该永久保存在数据库中。
+一个实现了ACID的数据库，相比没有实现ACID的数据库，通常会需要更强的CPU处理能力、更大的内存和更多的磁盘空间。
+隔离级别（Isolation level） READ UNCOMMITTED（读未提交）
+​ 事务中的修改，即使没有提交，对其他事务也都是可见的。事务可以读取未提交的数据，这也被称为脏读（Dirty Read）。
+READ COMMITTED（读提交）
+​ Oracle和SQL Server的默认隔离级别。一个事务可以读取另一个已提交的事务。换句话说，一个事务从开始直到提交之前，所做的任何修改对其他事务都是不可见的。这个级别有时候也叫做不可重复读（nonrepeatable read），因为两次执行同样的查询，可能会得到不一样的结果。MySQL的InnoDB引擎在提交读级别通过MVCC解决了不可重复读的问题
+REPEATABLE READ（可重复读）
+​ MySQL的默认隔离级别。一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的。MySQL的InnoDB引擎在提交读级别通过MVCC解决了不可重复读的问题，在可重复读级别通过间隙锁解决了幻读问题。
+SERIALIZABLE（可串行化）
+​ SERIALIZABLE是最高的隔离级别。它通过强制事务串行执行，避免了前面说的幻读的问题。简单来说，SERIALIZABLE会在读取的每一行数据上都加锁，所以可能导致大量的超时和锁争用的问题。实际应用中也很少用到这个隔离级别，只有在非常需要确保数据的一致性而且可以接受没有并发的情况下，才考虑采用该级别。
+隔离级别 脏读可能性 不可重复读可能性 幻读可能性 加锁读 READ UNCOMMITTED √ √ √ × READ COMMITTED × √ √ × REPEATABLE READ × × √ × SERIALIZABLE × × × √ 查看MySQL的隔离级别</description></item><item><title>MySQL的基础架构</title><link>https://huangkai1008.github.io/p/mysql%E7%9A%84%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/</link><pubDate>Mon, 01 Jun 2020 21:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mysql%E7%9A%84%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/</guid><description>逻辑架构 MySQL可以大体分为Server层和存储引擎层两部分, 见图1
+Server 层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。 存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL 5.5.5 版本开始成为了默认存储引擎 连接器(Connector) ​ 连接器负责和客户端建立连接、获取权限、维持和管理连接。
+# Mysql连接命令 mysql -h$ip -P$port -u$user -p MySQL客户端和服务端完成TCP握手后，连接器需要认证身份
+如果用户名或密码不对，你就会收到一个&amp;quot;Access denied for user&amp;quot;的错误，然后客户端程序结束执行。 如果用户名密码认证通过，连接器会到权限表里面查出拥有的权限，之后这个连接里面的权限判断逻辑，都将依赖于此时读到的权限，这就意味着，一个用户成功建立连接后，即使这个用户的权限做了修改，也不会影响已经存在连接的权限。修改完成后，只有再新建的连接才会使用新的权限设置。 查询缓存(Query Cache) ​ 在连接建立完成后，MySQL 拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以 key-value 对的形式，被直接缓存在内存中。key 是查询的语句，value 是查询的结果。如果你的查询能够直接在这个缓存中找到 key，那么这个 value 就会被直接返回给客户端。
+MySQL 8.0 版本的查询缓存功能被移除了
+分析器(Parser) 分析器的主要功能是对SQL语句做解析
+分析器会先做词法分析，再做语法分析，语法分析器会根据语法规则，判断 SQL 语句是否满足 MySQL 语法 优化器(Query Optimizer) ​ 优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。优化器并不关心表使用的是什么存储引擎，但存储引擎对于优化查询是有影响的。优化器会请求存储引擎提供容量或某个具体操作的开销信息，以及表数据的统计信息等。例如，某些存储引擎的某种索引，可能对一些特定的查询有优化。
+执行器(Query execution engine) ​ 开始执行的时候，要先判断一下对于表有没有执行操作的权限，如果没有，就会返回没有权限的错误。如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。
+对于一个特定的例子</description></item><item><title>Mysql优化</title><link>https://huangkai1008.github.io/p/mysql%E4%BC%98%E5%8C%96/</link><pubDate>Tue, 06 Nov 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mysql%E4%BC%98%E5%8C%96/</guid><description>mysql中min和max查询优化 max()函数需扫描where条件过滤后的所有行
+慎用max()函数，特别是频繁执行的sql，若需用到可转化为order by id desc limit 1</description></item><item><title>MariaDB安装</title><link>https://huangkai1008.github.io/p/mariadb%E5%AE%89%E8%A3%85/</link><pubDate>Sun, 09 Sep 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mariadb%E5%AE%89%E8%A3%85/</guid><description>MariaDB安装 platform: Centos7
+Install
+yum install -y mariadb-server MariaDB配置使用 Using
+systemctl start mariadb.service # 启动 systemctl enable mariadb.service # 开机自启 Configure
+首先是设置密码，会提示先输入密码
+Enter current password for root (enter for none): &amp;lt;–直接回车
+Set root password? [Y/n] &amp;lt;– 是否设置root用户密码，输入y并回车或直接回车
+New password: &amp;lt;– 设置root用户的密码
+Re-enter new password: &amp;lt;– 再输入一次你设置的密码
+其他配置
+Remove anonymous users?</description></item><item><title>Mysql安装配置</title><link>https://huangkai1008.github.io/p/mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 09 Sep 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>Mysql安装 版本: 8.0 添加源 yum local install https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm 安装 yum install mysql-community-server Mysql配置 初始化
+sudo mysqld --initialize --user=mysql --basedir=/usr --datadir=/var/lib/mysql 启动mysql
+systemctl start mysqld 设置mysql开机自启
+systemctl enable mysqld 查看初始密码
+grep &amp;#39;temporary password&amp;#39; /var/log/mysqld.log 进入mysql
+mysql -u root -p 修改密码
+ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;Huang|12345&amp;#39; 查看版本
+select version(); +-----------+ | version() | +-----------+ | 8.</description></item><item><title>Sqlalchemy使用注意</title><link>https://huangkai1008.github.io/p/sqlalchemy%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F/</link><pubDate>Wed, 14 Jun 2017 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/sqlalchemy%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F/</guid><description>遇到in查询之类的批量删除或者更新，可以使用synchronize_session=False
+db.session.delete(synchronize_session=False) 使用find_in_set
+from sqlalchemy.sql.expression import func db.session.query(Post).filter(func.find_in_set(&amp;#39;10&amp;#39;, Post.c.tag_id)) 批量增加删除
+db.session.add_all(instances) db.session.delete_all(instances) Mysql IS NULL判断
+isnot() is_() Mysql 联合主键
+from sqlalchemy import PrimaryKeyConstraint class Node(Model): __table_args__ = ( PrimaryKeyConstraint(&amp;#39;pk1&amp;#39;, &amp;#39;pk2&amp;#39;), ) Flask_sqlalchemy支持Double精度类型字段
+from sqlalchemy import Column from sqlalchemy.dialects.mysql import DOUBLE from app import db class BaseModel(Model): id = db.Column(db.Integer, primary_key=True) # Flask_sqlalchemy double_column = Column(DOUBLE, comment=&amp;#39;双精度字段&amp;#39;) # Sqlalchemy mysql double column subquery使用实例</description></item></channel></rss>

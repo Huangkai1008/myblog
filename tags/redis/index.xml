@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>redis on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/redis/</link><description>Recent content in redis on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 11 Oct 2018 13:56:20 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>Redis安装配置</title><link>https://huangkai1008.github.io/p/redis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 11 Oct 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/redis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>Redis 安装 Platform: centos7
+version: 5.0
+安装
+wget http://download.redis.io/releases/redis-5.0.0.tar.gz # 获取包 tar -zxvf redis-5.0.0.tar.gz mv redis-5.0.0 /usr/local/redis make &amp;amp;&amp;amp; make install Redis配置 设置配置文件目录
+mkdir -p /etc/redis cp redis.conf /etc/redis 修改配置文件
+vim /etc/redis/redis.conf daemonize yes (no -&amp;gt; yes) # 守护进程 bind 0.0.0.0 (127.0.0.1 -&amp;gt; 0.0.0.0) # 远程登录 protected-mode no (yes -&amp;gt; no) # 关闭保护模式/或者添加密码 Redis使用 启动</description></item></channel></rss>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>transaction on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/transaction/</link><description>Recent content in transaction on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 02 Jun 2020 22:25:20 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/transaction/index.xml" rel="self" type="application/rss+xml"/><item><title>事务</title><link>https://huangkai1008.github.io/p/%E4%BA%8B%E5%8A%A1/</link><pubDate>Tue, 02 Jun 2020 22:25:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/%E4%BA%8B%E5%8A%A1/</guid><description>概念 事务就是一组原子性的SQL查询，或者说一个独立的工作单元。如果数据库引擎能够成功地对数据库应用该组查询的全部语句，那么就执行该组查询。如果其中有任何一条语句因为崩溃或其他原因无法执行，那么所有的语句都不会执行。也就是说，事务内的语句，要么全部执行成功，要么全部执行失败。在 MySQL 中，事务支持是在引擎层实现的。
+ACID特性 原子性（Atomicity）：事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行
+一致性（Consistency）：事务应确保数据库的状态从一个一致状态转变为另一个一致状态。一致状态的含义是数据库中的数据应满足完整性约束。
+隔离性（Isolation）：通常来说，一个事务所做的修改在最终提交以前，对其他事务是不可见的。
+持久性（Durability）：已被提交的事务对数据库的修改应该永久保存在数据库中。
+一个实现了ACID的数据库，相比没有实现ACID的数据库，通常会需要更强的CPU处理能力、更大的内存和更多的磁盘空间。
+隔离级别（Isolation level） READ UNCOMMITTED（读未提交）
+​ 事务中的修改，即使没有提交，对其他事务也都是可见的。事务可以读取未提交的数据，这也被称为脏读（Dirty Read）。
+READ COMMITTED（读提交）
+​ Oracle和SQL Server的默认隔离级别。一个事务可以读取另一个已提交的事务。换句话说，一个事务从开始直到提交之前，所做的任何修改对其他事务都是不可见的。这个级别有时候也叫做不可重复读（nonrepeatable read），因为两次执行同样的查询，可能会得到不一样的结果。MySQL的InnoDB引擎在提交读级别通过MVCC解决了不可重复读的问题
+REPEATABLE READ（可重复读）
+​ MySQL的默认隔离级别。一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的。MySQL的InnoDB引擎在提交读级别通过MVCC解决了不可重复读的问题，在可重复读级别通过间隙锁解决了幻读问题。
+SERIALIZABLE（可串行化）
+​ SERIALIZABLE是最高的隔离级别。它通过强制事务串行执行，避免了前面说的幻读的问题。简单来说，SERIALIZABLE会在读取的每一行数据上都加锁，所以可能导致大量的超时和锁争用的问题。实际应用中也很少用到这个隔离级别，只有在非常需要确保数据的一致性而且可以接受没有并发的情况下，才考虑采用该级别。
+隔离级别 脏读可能性 不可重复读可能性 幻读可能性 加锁读 READ UNCOMMITTED √ √ √ × READ COMMITTED × √ √ × REPEATABLE READ × × √ × SERIALIZABLE × × × √ 查看MySQL的隔离级别</description></item></channel></rss>

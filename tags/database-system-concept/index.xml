@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>database-system-concept on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/database-system-concept/</link><description>Recent content in database-system-concept on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 09 Sep 2018 13:56:20 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/database-system-concept/index.xml" rel="self" type="application/rss+xml"/><item><title>数据库系统概论-介绍</title><link>https://huangkai1008.github.io/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%BB%8B%E7%BB%8D/</link><pubDate>Sun, 09 Sep 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%BB%8B%E7%BB%8D/</guid><description>数据库系统的目的(Purpose of Database Systems) 在早期，数据库应用程序直接建立在文件系统之上，导致一系列的问题
+数据冗余和不一致(Data redundancy and inconsistency)
+数据访问难度大(Difficulty in accessing data)
+数据隔离(Data isolation)
+完整性问题(Integrity problems)
+完整性约束(Integrity constraints)问题
+难以添加新约束和修改约束
+原子性更新(Atomicity of updates)
+更新失败可能会导致数据库的数据处于不一致的状态，或者只更新了部分数据
+例如: 从一方转账给另一方，只会有完成转账和完全没发生转账两种情况，不会出现转账方转账了但是收款方未收到款项的问题
+多用户并发访问(Concurrent access by multiple users)
+并发访问需要高性能的支持， 而不受控制的并发访问可能会导致数据不一致
+安全问题(Security problems)
+文件系统难以提供安全保障
+数据库系统就是为了解决这些问题产生的
+数据模型(Data Models) 组成 一系列用于描述的工具 数据(Data)</description></item></channel></rss>

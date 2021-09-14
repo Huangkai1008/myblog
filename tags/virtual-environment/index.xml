@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>virtual environment on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/virtual-environment/</link><description>Recent content in virtual environment on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 14 Sep 2019 13:56:20 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/virtual-environment/index.xml" rel="self" type="application/rss+xml"/><item><title>Poetry安装和使用</title><link>https://huangkai1008.github.io/p/poetry%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Sat, 14 Sep 2019 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/poetry%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>安装 custom installer
+curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python source $HOME/.poetry/env pip
+pip install poetry # 不推荐, 可能会有冲突 验证安装
+poetry --version 使用 项目初始化
+从pipenv/pip等工具迁移
+poetry init # 进入交互式命令行填写项目信息, 会生成pyproject.toml 添加依赖
+添加包
+poetry add poetry add fastapi=0.38.1 -E all # pipenv install fastapi[all] poetry add celery --extras &amp;#34;librabbitmq redis auth msgpack&amp;#34; # pip install &amp;#34;celery[librabbitmq,redis,auth,msgpack]&amp;#34; 依赖安装</description></item></channel></rss>

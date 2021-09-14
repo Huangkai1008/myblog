@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>计算机网络 on Huanghuang's Blog</title><link>https://huangkai1008.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link><description>Recent content in 计算机网络 on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 14 Jun 2020 16:02:15 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>HTTP</title><link>https://huangkai1008.github.io/p/http/</link><pubDate>Sun, 14 Jun 2020 16:02:15 +0800</pubDate><guid>https://huangkai1008.github.io/p/http/</guid><description>DNS 和域名 一、域名 网域名称（英语：Domain Name，简称：Domain），简称域名、网域，是由一串用点分隔的字符组成的互联网上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位。域名可以说是一个IP地址的代称，目的是为了便于记忆后者。
+域名的层级 www.example.com 真正的域名是 www.example.com.root ，简写为 www.example.com. 。因为，根域名 .root 对于所有域名都是一样的，所以平时是省略的。
+根域名的下一级，叫做顶级域名（top-level domain，缩写为TLD），比如 .com 、 .net ；再下一级叫做次级域名（second-level domain，缩写为SLD），比如 www.example.com 里面的 .example ，这一级域名是用户可以注册的；再下一级是主机名（host），比如www.example.com里面的www，又称为三级域名，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。
+主机名.次级域名.顶级域名.根域名 host.sld.tld.root
+二、DNS 域名系统（英语：Domain Name System，缩写：DNS）是一个分布式数据库，提供了域名和 IP地址之间相互转换的服务。
+查询过程 DNS 服务器根据域名的层级，进行分级查询。
+每一级域名都有自己的NS（Name Server） 记录，NS记录指向该级域名的域名服务器。这些服务器知道下一级域名的各种记录。
+&amp;ldquo;分级查询&amp;rdquo;，就是从根域名开始，依次查询每一级域名的NS记录，直到查到最终的IP地址
+过程大致为:
+从&amp;quot;根域名服务器&amp;quot;查到&amp;quot;顶级域名服务器&amp;quot;的NS记录和A记录（IP地址） 从&amp;quot;顶级域名服务器&amp;quot;查到&amp;quot;次级域名服务器&amp;quot;的NS记录和A记录（IP地址） 从&amp;quot;次级域名服务器&amp;quot;查出&amp;quot;主机名&amp;quot;的IP地址 dig math.stackexchange.com ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.11.3-1ubuntu1.15-Ubuntu &amp;lt;&amp;lt;&amp;gt;&amp;gt; math.stackexchange.com ;; global options: +cmd ;; Got answer: ;; -&amp;gt;&amp;gt;HEADER&amp;lt;&amp;lt;- opcode: QUERY, status: NOERROR, id: 50719 ;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1 ;; OPT PSEUDOSECTION: ; EDNS: version: 0, flags:; udp: 65494 ;; QUESTION SECTION: ;math.</description></item><item><title>HTTP</title><link>https://huangkai1008.github.io/p/http/</link><pubDate>Fri, 12 Jun 2020 12:22:57 +0800</pubDate><guid>https://huangkai1008.github.io/p/http/</guid><description>HTTP 一、概述 请求和响应报文 客户端发送一个请求报文给服务器，服务器根据请求报文中的信息进行处理，并将处理结果放入响应报文中返回给客户端。
+请求消息（requests） GET / HTTP/1.1 Host: developer.mozilla.org Accept-Language: fr 起始行（start line）：包含一个HTTP方法（method）、请求目标（request target） 和 HTTP 版本 （HTTP version）
+消息头（headers）： 整个 header（包括其值）表现为单行形式
+一个空行用来分隔首部和内容主体 Body
+消息主体（body）
+响应消息(responses) HTTP/1.1 200 OK Date: Sat, 09 Oct 2010 14:28:02 GMT Server: Apache Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT ETag: &amp;#34;51142bc1-7449-479b075b2891b&amp;#34; Accept-Ranges: bytes Content-Length: 29769 Content-Type: text/html &amp;lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page) 状态行（status line)： 协议版本，通常为 HTTP/1.</description></item></channel></rss>

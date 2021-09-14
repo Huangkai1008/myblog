@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>golang on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/golang/</link><description>Recent content in golang on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 31 Jul 2018 13:56:20 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang安装</title><link>https://huangkai1008.github.io/p/golang%E5%AE%89%E8%A3%85/</link><pubDate>Tue, 31 Jul 2018 13:56:20 +0800</pubDate><guid>https://huangkai1008.github.io/p/golang%E5%AE%89%E8%A3%85/</guid><description>安装 Platform: Centos7
+version: 1.12
+安装
+cd /opt wget https://studygolang.com/dl/golang/go1.12.4.linux-amd64.tar.gz tar xzvf go1.12.4.linux-amd64.tar.gz # 安装 配置环境变量
+vim ~/.zshrc # 如果用bash就是vim ~/.bashrc # 追加golang配置 export GOROOT=/opt/go export PATH=$PATH:$GOROOT/bin # 立即生效 source ~/.zshrc # 查看版本 go version</description></item></channel></rss>

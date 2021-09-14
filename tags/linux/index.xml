@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linux on Huanghuang's Blog</title><link>https://huangkai1008.github.io/tags/linux/</link><description>Recent content in linux on Huanghuang's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Aug 2019 22:21:57 +0800</lastBuildDate><atom:link href="https://huangkai1008.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Manjaro安装配置</title><link>https://huangkai1008.github.io/p/manjaro%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 01 Aug 2019 22:21:57 +0800</pubDate><guid>https://huangkai1008.github.io/p/manjaro%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>基本安装 使用rufus以dd模式写入U盘 从u盘启动 将manjaro启动项中的driver和boot添加或修改driver=intel才能进入安装界面(双显卡笔记本) 安装系统, 注意不要联网, 否则容易卡在安装 reboot进入系统 manjaro启动项中quiet后增加nouveau.modeset=0(双显卡) 双显卡使用prime管理连接外接显示器 删除bumblebee或者开源驱动
+sudo mhwd -r pci nonfree 0300 安装nvidia私有闭源驱动
+方法一:
+sudo mhwd -i pci video-nvidia 或
+sudo mhwd -i pci video-nvidia-390xx # 390xx或者435xx, 数字是驱动版本... 方法二 系统设置-硬件设定中右键安装video-nvidia-390xx之类的驱动
+安装依赖
+sudo pacman -S linuxXXX-headers acpi_call-dkms xorg-xrandr xf86-video-intel git 注: XXX 为内核版本， 本来我的5.3有点问题，降级成4.19才可以，以4.19为例便是 linux419-headers
+注入
+sudo modprobe acpi_call 使用github上的脚本</description></item></channel></rss>
