@@ -1,7 +1,7 @@
 ---
 title: "计算机导论 函数抽象"
 date: 2022-02-05T13:35:54+08:00
-lastmod: 2022-02-05T13:35:54+08:00
+lastmod: 2022-03-05T08:58:54+08:00
 description: ""
 draft: false
 tags: ["计算机导论", "计算机课程"]
@@ -54,7 +54,6 @@ categories: ["计算机课程"]
 
 操作符和操作数都属于表达式，所以都需要先计算出值。
 
-
 ### 程序（`program`)
 
 * 程序通过操作值工作
@@ -77,8 +76,6 @@ categories: ["计算机课程"]
 ```
 
 值可以是任意的表达式。
-
-
 
 #### 命名规范
 
@@ -259,4 +256,3 @@ def count_partitions(n, m):
     else:
         return count_partitions(n - m, m) + count_partitions(n, m - 1)
 ```
-

@@ -1,7 +1,7 @@
 ---
 title: "计算机导论 数据抽象"
-date: 2022-02-05T13:35:54+08:00
-lastmod: 2022-02-05T13:35:54+08:00
+date: 2022-02-08T11:13:32+08:00
+lastmod: 2022-03-05T08:58:54+08:00
 description: ""
 draft: false
 tags: ["计算机导论", "计算机课程"]
@@ -82,8 +82,6 @@ categories: ["计算机课程"]
   def rationals_are_equal(x, y):
       return numer(x) * denom(y) == numer(y) * denom(x)
   ```
-
-  
 
 ## 数据抽象的屏障
 
@@ -180,6 +178,5 @@ def partition_tree(n, m):
 
 Python 中的每个值都是一个对象
 
-- 所有对象都有属性
-- 对象通常有关联的方法
-
+* 所有对象都有属性
+* 对象通常有关联的方法
